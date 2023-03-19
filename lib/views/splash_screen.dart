@@ -21,13 +21,13 @@ class SplashScreen extends StatelessWidget {
               duration: const Duration(milliseconds: 1600),
               top: splashController.animate.value ? 0 : -30,
               left: splashController.animate.value ? 0 : -30,
-              child: Image(image: AssetImage(tSplashTopIcon)),
+              child: const Image(image: AssetImage(tSplashTopIcon)),
             ),
           ),
           Obx(
             () => AnimatedPositioned(
                 duration: const Duration(milliseconds: 1600),
-                top: 80,
+                top: 140,
                 left: splashController.animate.value ? 30 : -80,
                 child: AnimatedOpacity(
                   duration: const Duration(milliseconds: 1600),
@@ -39,8 +39,7 @@ class SplashScreen extends StatelessWidget {
                           style: Theme.of(context).textTheme.headlineMedium,
                           textDirection: TextDirection.ltr),
                       Text(tAppTagline,
-                          // ignore: deprecated_member_use
-                          style: Theme.of(context).textTheme.headline6,
+                          style: Theme.of(context).textTheme.bodyLarge,
                           textDirection: TextDirection.ltr)
                     ],
                   ),
@@ -48,12 +47,18 @@ class SplashScreen extends StatelessWidget {
           ),
           Obx(
             () => AnimatedPositioned(
-              duration: const Duration(milliseconds: 2400),
-              bottom: splashController.animate.value ? 100 : 0,
+              height: 400,
+              width: 400,
+              duration: const Duration(milliseconds: 2200),
+              bottom: splashController.animate.value ? 150 : 0,
               child: AnimatedOpacity(
-                  duration: const Duration(milliseconds: 2000),
-                  opacity: splashController.animate.value ? 1 : 0,
-                  child: Image(image: AssetImage(tSplashImage))),
+                duration: const Duration(milliseconds: 2000),
+                opacity: splashController.animate.value ? 1 : 0,
+                child: const Image(
+                  image: AssetImage(tSplashImage),
+                  fit: BoxFit.cover,
+                ),
+              ),
             ),
           ),
           Obx(

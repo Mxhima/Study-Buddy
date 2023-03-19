@@ -58,7 +58,10 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/images/
+    - images/
+    # - assets/images/splash-images/
+    # - assets/images/onboarding-images/
+    # - assets/images/welcome-images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -97,15 +97,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
           ),
           Positioned(
-                bottom: 10,
-                child: AnimatedSmoothIndicator(
-                  activeIndex: controller.currentPage,
-                  count: 3,
-                  effect: const WormEffect(
-                    activeDotColor: Color(0xFF272727),
-                    dotHeight: 5.0,
-                  ),
-                )),
+              bottom: 10,
+              child: AnimatedSmoothIndicator(
+                activeIndex: controller.currentPage,
+                count: 3,
+                effect: const WormEffect(
+                  activeDotColor: Color(0xFF272727),
+                  dotHeight: 5.0,
+                ),
+              )),
         ],
       ),
     );

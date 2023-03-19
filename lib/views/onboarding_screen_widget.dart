@@ -11,8 +11,6 @@ class OnBoardingScreenWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
-
     return Container(
       padding: const EdgeInsets.all(30.0),
       color: model.bgColor,
@@ -39,8 +37,8 @@ class OnBoardingScreenWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
         ),
-        SizedBox(
-          height: 50.0,
+        const SizedBox(
+          height: 90.0,
         )
       ]),
     );

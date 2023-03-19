@@ -1,7 +1,8 @@
-// ignore_for_file: file_names
+// ignore_for_file: file_names, unused_import
 
 import 'package:get/get.dart';
-import 'package:study_buddy/main.dart';
+import 'package:study_buddy/views/onboarding_screen.dart';
+import 'package:study_buddy/views/welcome_screen.dart';
 
 class SplashScreenController extends GetxController {
   static SplashScreenController get find => Get.find();
@@ -12,6 +13,6 @@ class SplashScreenController extends GetxController {
     await Future.delayed(const Duration(milliseconds: 500));
     animate.value = true;
     await Future.delayed(const Duration(milliseconds: 5000));
-    Get.to(() => const Home());
+    Get.to(() => const WelcomeScreen());
   }
 }
