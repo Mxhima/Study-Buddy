@@ -20,7 +20,7 @@ class TtextTheme {
         fontWeight: FontWeight.bold,
       ),
       titleSmall: GoogleFonts.montserrat(
-        color: Colors.black54,
+        color: Colors.black87,
         fontSize: 20.0,
         fontWeight: FontWeight.bold,
       ),

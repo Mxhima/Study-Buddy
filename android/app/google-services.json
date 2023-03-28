@@ -1,0 +1,54 @@
+{
+  "project_info": {
+    "project_number": "734258626145",
+    "project_id": "studybuddy-4b78f",
+    "storage_bucket": "studybuddy-4b78f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:734258626145:android:dc5313969a9390b600f420",
+        "android_client_info": {
+          "package_name": "yxsha.study_buddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "734258626145-5lbd7hrra1geuoen1pin3v9qdq8ukomo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "yxsha.study_buddy",
+            "certificate_hash": "d7e563124064d3aceab9f03d5523d751fe859c9a"
+          }
+        },
+        {
+          "client_id": "734258626145-rmdobcntbftthv9j1jkt4t46govnnecr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAqsRf4xVbpplfl4WqlGQdvyzfi75hckdc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "734258626145-rmdobcntbftthv9j1jkt4t46govnnecr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "734258626145-o79qp3lf79okis97m91md84ms9nsm7nf.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "yxsha.studyBuddy"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -16,5 +16,11 @@ const String tWelcomeImage = "images/welcomeImage.png";
 const String tLoginImage = "images/loginImage.png";
 const String tGoogleLogoImage = "images/googleLogo.png";
 
-/* Login Screen Images */
+/* SignUp Screen Images */
 const String tSignupImage = "images/signupImage.png";
+
+/* Forgot Password Screen Images */
+const String tForgotPasswordImage = "images/forgotPasswordImage.png";
+
+/* Home Screen Images */
+const String tUserProfileImage = "images/userprofileImage.png";

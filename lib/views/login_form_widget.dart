@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../constants/text_strings.dart';
+import 'forgot_password_model_bottom_sheet.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -37,7 +38,9 @@ class LoginForm extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                ForgotPasswordScreen.buildShowModalBottomSheet(context);
+              },
               child: const Text(tForgotPassword),
             ),
           ),

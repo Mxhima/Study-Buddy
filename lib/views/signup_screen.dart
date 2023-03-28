@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/widgets/form_header_widget.dart';
 import '../constants/text_strings.dart';
+import 'login_screen.dart';
 import 'signup_form_widget.dart';
 
 class SignUpScreen extends StatelessWidget {
@@ -21,6 +23,8 @@ class SignUpScreen extends StatelessWidget {
                       image: tSignupImage,
                       title: tSignUpTitle,
                       subtitle: tSignUpSubTitle,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      imageHeight: 0.2,
                     ),
                     const SignUpFormWidget(),
                     Column(
@@ -45,7 +49,7 @@ class SignUpScreen extends StatelessWidget {
                           height: 10.0,
                         ),
                         TextButton(
-                          onPressed: () {},
+                          onPressed: () => Get.to(() => const LoginScreen()),
                           child: Text.rich(
                             TextSpan(
                                 text: tAlreadyHaveAnAccount,

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:study_buddy/constants/colors.dart';
@@ -6,6 +7,7 @@ import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
 import 'package:study_buddy/models/onboarding_model.dart';
 import 'package:study_buddy/views/onboarding_screen_widget.dart';
+import 'package:study_buddy/views/welcome_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -92,7 +94,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             top: 50,
             right: 20,
             child: TextButton(
-              onPressed: () => controller.jumpToPage(page: 2),
+              onPressed: () => Get.to(() => const WelcomeScreen()),
               child: const Text("Skip", style: TextStyle(color: Colors.grey)),
             ),
           ),
