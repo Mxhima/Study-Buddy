@@ -6,8 +6,8 @@ import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
 import 'package:study_buddy/models/onboarding_model.dart';
-import 'package:study_buddy/views/onboarding_screen_widget.dart';
-import 'package:study_buddy/views/welcome_screen.dart';
+import 'package:study_buddy/views/onboarding_screen/onboarding_screen_widget.dart';
+import 'package:study_buddy/views/welcome_screen/welcome_screen.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -19,6 +19,7 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   final controller = LiquidController();
 
+  //This helps us to change the animated smooth indicator to be changed when a page is changed.
   int currentPage = 0;
 
   @override
@@ -34,6 +35,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           height: size.height,
           bgColor: tOnboardingPage1Color,
         ),
+
+//This widget is used to simplify the codebase by using code reusability.
+//We can add any number of pages by calling this widget and feeding the
+//required parameters.
       ),
       OnBoardingScreenWidget(
         model: OnBoardingModel(
@@ -59,7 +64,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
     return Scaffold(
       body: Stack(
-        alignment: Alignment.center,
+        alignment: Alignment.center, //all the elements will be in the center.
         children: [
           LiquidSwipe(
             pages: pages,
@@ -82,7 +87,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   foregroundColor: Colors.white,
                 ),
                 child: Container(
-                  padding: const EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(
+                      20), //this can be used to increase the size of the next button.
                   decoration: const BoxDecoration(
                     color: Color(0xFF272727),
                     shape: BoxShape.circle,
@@ -101,7 +107,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Positioned(
               bottom: 10,
               child: AnimatedSmoothIndicator(
-                activeIndex: controller.currentPage,
+                activeIndex: controller
+                    .currentPage, //this gets the active index of the liquid swipe.
                 count: 3,
                 effect: const WormEffect(
                   activeDotColor: Color(0xFF272727),
@@ -117,5 +124,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     setState(() {
       currentPage = activePageIndex;
     });
+    //When the page is going to be changed we want the Animated smooth indicator to change accordingly.
   }
 }

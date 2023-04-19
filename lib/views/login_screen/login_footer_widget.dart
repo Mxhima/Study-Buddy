@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_buddy/constants/image_strings.dart';
-import 'package:study_buddy/views/signup_screen.dart';
-import '../constants/text_strings.dart';
+import 'package:study_buddy/views/signup_screen/signup_screen.dart';
+import '../../constants/text_strings.dart';
 
 class LoginFooterWidget extends StatelessWidget {
   const LoginFooterWidget({

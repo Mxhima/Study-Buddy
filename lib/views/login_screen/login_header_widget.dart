@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:study_buddy/constants/image_strings.dart';
-import '../constants/text_strings.dart';
+
+import '../../constants/text_strings.dart';
 
 class LoginHeaderWidget extends StatelessWidget {
   final Size size;

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
-import 'package:study_buddy/views/otp_screen.dart';
+import 'package:study_buddy/views/otp_screen/otp_screen.dart';
 import 'package:study_buddy/widgets/form_header_widget.dart';
 
 class ForgotPasswordMailScreen extends StatelessWidget {

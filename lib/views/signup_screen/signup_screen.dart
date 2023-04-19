@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/widgets/form_header_widget.dart';
-import '../constants/text_strings.dart';
-import 'login_screen.dart';
+import '../../constants/text_strings.dart';
+import '../login_screen/login_screen.dart';
 import 'signup_form_widget.dart';
 
 class SignUpScreen extends StatelessWidget {

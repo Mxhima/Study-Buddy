@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../models/onboarding_model.dart';
+import '../../models/onboarding_model.dart';
 
 class OnBoardingScreenWidget extends StatelessWidget {
   const OnBoardingScreenWidget({
@@ -12,7 +12,7 @@ class OnBoardingScreenWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(30.0),
+      padding: const EdgeInsets.all(20.0),
       color: model.bgColor,
       child:
           Column(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: [
@@ -28,7 +28,7 @@ class OnBoardingScreenWidget extends StatelessWidget {
             ),
             Text(
               model.subtitle,
-              style: Theme.of(context).textTheme.titleSmall,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         ),
@@ -38,7 +38,7 @@ class OnBoardingScreenWidget extends StatelessWidget {
           textAlign: TextAlign.center,
         ),
         const SizedBox(
-          height: 90.0,
+          height: 100.0,
         )
       ]),
     );

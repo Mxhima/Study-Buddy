@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_buddy/controllers/signup_controller.dart';
-import 'package:study_buddy/views/otp_screen.dart';
-import '../constants/text_strings.dart';
+import 'package:study_buddy/views/otp_screen/otp_screen.dart';
+import '../../constants/text_strings.dart';
+import '../../models/user_model.dart';
 
 class SignUpFormWidget extends StatelessWidget {
   const SignUpFormWidget({
@@ -61,12 +62,23 @@ class SignUpFormWidget extends StatelessWidget {
                 child: ElevatedButton(
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      SignUpController.instance.registerUser(
-                          controller.email.text.trim(),
-                          controller.password.text.trim());
-                      SignUpController.instance
-                          .phoneAuthentication(controller.phoneNo.text.trim());
-                      Get.to(() => const OTPScreen());
+                      // SignUpController.instance.registerUser(
+                      //     controller.email.text.trim(),
+                      //     controller.password.text.trim());
+                      // SignUpController.instance
+                      //     .phoneAuthentication(controller.phoneNo.text.trim());
+                      // Get.to(() => const OTPScreen());
+
+                      // Step - 3 [Get User and pass it to Controller.]
+
+                      final user = UserModel(
+                        email: controller.email.text.trim(),
+                        password: controller.password.text.trim(),
+                        fullName: controller.fullName.text.trim(),
+                        phoneNo: controller.fullName.text.trim(),
+                      );
+
+                      SignUpController.instance.createUser(user);
                     }
                   },
                   child: Text(tSignup.toUpperCase()),

@@ -24,3 +24,6 @@ const String tForgotPasswordImage = "images/forgotPasswordImage.png";
 
 /* Home Screen Images */
 const String tUserProfileImage = "images/userprofileImage.png";
+
+/* Profile Screen Images */
+const String tProfileImage = "images/profileImage.png";

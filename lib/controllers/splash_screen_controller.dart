@@ -1,8 +1,8 @@
 // ignore_for_file: file_names, unused_import
 
 import 'package:get/get.dart';
-import 'package:study_buddy/views/onboarding_screen.dart';
-import 'package:study_buddy/views/welcome_screen.dart';
+import 'package:study_buddy/views/onboarding_screen/onboarding_screen.dart';
+import 'package:study_buddy/views/welcome_screen/welcome_screen.dart';
 
 class SplashScreenController extends GetxController {
   static SplashScreenController get find => Get.find();

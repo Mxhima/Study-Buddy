@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../constants/text_strings.dart';
-import '../widgets/forgot_password_btn_widget.dart';
+import '../../constants/text_strings.dart';
+import '../../widgets/forgot_password_btn_widget.dart';
 import 'forgot_password_mail_screen.dart';
 import 'forgot_password_phone_screen.dart';
 

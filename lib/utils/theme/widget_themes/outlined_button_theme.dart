@@ -12,6 +12,7 @@ class TOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
         foregroundColor: tSecondaryColor,
         side: const BorderSide(color: tPrimaryColor),
+        textStyle: const TextStyle(color: tPrimaryColor),
         padding: const EdgeInsets.symmetric(vertical: 16)),
   );
 
@@ -20,6 +21,7 @@ class TOutlinedButtonTheme {
     style: OutlinedButton.styleFrom(
         foregroundColor: tWhiteColor,
         side: const BorderSide(color: tWhiteColor),
+        textStyle: const TextStyle(color: tWhiteColor),
         padding: const EdgeInsets.symmetric(vertical: 16)),
   );
 }

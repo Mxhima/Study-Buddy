@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import '../constants/text_strings.dart';
-import 'forgot_password_model_bottom_sheet.dart';
+import 'package:study_buddy/repository/authentication/authentication_repository.dart';
+import '../../constants/text_strings.dart';
+import '../forgotPassword_screen/forgot_password_model_bottom_sheet.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({
@@ -9,6 +11,7 @@ class LoginForm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // final auth = AuthenticationRepository();
     return Form(
         child: Container(
       padding: const EdgeInsets.symmetric(vertical: 20.0),
@@ -20,6 +23,13 @@ class LoginForm extends StatelessWidget {
               prefixIcon: Icon(Icons.person_outline_outlined),
               label: Text(tEmail),
             ),
+            // validator: (value) {
+            //   if (value!.isEmpty || !value.contains('@')) {
+            //     return "Incorrect Email";
+            //   } else {
+            //     return null;
+            //   }
+            // },
           ),
           const SizedBox(
             height: 20.0,
@@ -47,7 +57,10 @@ class LoginForm extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             child: ElevatedButton(
-                onPressed: () {}, child: Text(tLogin.toUpperCase())),
+                onPressed: () {
+                  // auth.loginUserWithEmailAndPassword(email, password);
+                },
+                child: Text(tLogin.toUpperCase())),
           ),
         ],
       ),

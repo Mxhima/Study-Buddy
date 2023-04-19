@@ -62,3 +62,19 @@ const String tForgetMailSubTitle =
 const String tOtpTitle = "CO\nDE";
 const String tOtpSubtitle = "Verification";
 const String tOtpMessage = "Enter the verification code sent at ";
+
+/* -- Profile Screen - Text */
+const String tProfile = "Profile";
+const String tEditProfile = "Edit Profile";
+const String tLogoutDialog = "Logout";
+const String tProfileHeading = "StudyBuddy.";
+const String tProfileSubheading = "CHAKABLASSSSSS";
+
+const String tMenu1 = "Menu";
+const String tMenu2 = "Information";
+const String tMenu3 = "User Management";
+
+/* -- Profile Update Screen - Text */
+const String tDelete = "Delete";
+const String tJoined = "Joined ";
+const String tJoinedAt = "25 February 2023";
