@@ -9,9 +9,9 @@ class Task {
     this.completed = false,
   });
 
-  void toggleCompleted() {
-    completed = !completed;
-  }
+  // void toggleCompleted() {
+  //   completed = !completed;
+  // }
 
   factory Task.fromMap(Map<String, dynamic> data, String documentId) {
     return Task(

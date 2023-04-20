@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:study_buddy/constants/colors.dart';
 import 'login_footer_widget.dart';
 import 'login_form_widget.dart';
 import 'login_header_widget.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;

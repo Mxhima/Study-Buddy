@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-
 import '../constants/colors.dart';
-import '../constants/text_strings.dart';
 
 class ProfileMenuWidget extends StatelessWidget {
   const ProfileMenuWidget({

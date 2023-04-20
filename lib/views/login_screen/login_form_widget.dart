@@ -1,13 +1,33 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:study_buddy/repository/authentication/authentication_repository.dart';
+import 'package:get/get.dart';
+import 'package:google_sign_in/google_sign_in.dart';
+import 'package:study_buddy/controllers/login_controller.dart';
+import 'package:study_buddy/views/forgotPassword_screen/forgot_password_mail_screen.dart';
 import '../../constants/text_strings.dart';
-import '../forgotPassword_screen/forgot_password_model_bottom_sheet.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
   });
+
+  @override
+  State<LoginForm> createState() => _LoginFormState();
+}
+
+class _LoginFormState extends State<LoginForm> {
+  bool _obscureText = true;
+  final _controller = TextEditingController();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn googleSignIn = GoogleSignIn();
+
+  late String email, password;
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +37,18 @@ class LoginForm extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 20.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
+        children: <Widget>[
           TextFormField(
+            style: const TextStyle(fontSize: 16),
             decoration: const InputDecoration(
               prefixIcon: Icon(Icons.person_outline_outlined),
               label: Text(tEmail),
             ),
+            onChanged: (value) {
+              setState(() {
+                email = value.trim();
+              });
+            },
             // validator: (value) {
             //   if (value!.isEmpty || !value.contains('@')) {
             //     return "Incorrect Email";
@@ -35,12 +61,27 @@ class LoginForm extends StatelessWidget {
             height: 20.0,
           ),
           TextFormField(
-            decoration: const InputDecoration(
-              prefixIcon: Icon(Icons.fingerprint),
-              label: Text(tPassword),
+            controller: _controller,
+            obscureText: _obscureText,
+            style: const TextStyle(fontSize: 16),
+            decoration: InputDecoration(
+              prefixIcon: const Icon(Icons.fingerprint),
+              label: const Text(tPassword),
               suffixIcon: IconButton(
-                  onPressed: null, icon: Icon(Icons.remove_red_eye_sharp)),
+                icon: Icon(
+                    _obscureText ? Icons.visibility_off : Icons.visibility),
+                onPressed: () {
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
+              ),
             ),
+            onChanged: (value) {
+              setState(() {
+                password = value.trim();
+              });
+            },
           ),
           const SizedBox(
             height: 10.0,
@@ -49,7 +90,7 @@ class LoginForm extends StatelessWidget {
             alignment: Alignment.centerRight,
             child: TextButton(
               onPressed: () {
-                ForgotPasswordScreen.buildShowModalBottomSheet(context);
+                Get.to(() => const ForgotPasswordMailScreen());
               },
               child: const Text(tForgotPassword),
             ),
@@ -58,7 +99,7 @@ class LoginForm extends StatelessWidget {
             width: double.infinity,
             child: ElevatedButton(
                 onPressed: () {
-                  // auth.loginUserWithEmailAndPassword(email, password);
+                  signInWithEmail(email, password);
                 },
                 child: Text(tLogin.toUpperCase())),
           ),

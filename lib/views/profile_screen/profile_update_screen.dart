@@ -92,6 +92,7 @@ class ProfileUpdateScreen extends StatelessWidget {
                           height: 10.0,
                         ),
                         TextFormField(
+                            style: const TextStyle(fontSize: 16),
                             controller: email,
                             initialValue: userData.email,
                             decoration: const InputDecoration(
@@ -102,6 +103,7 @@ class ProfileUpdateScreen extends StatelessWidget {
                           height: 10.0,
                         ),
                         TextFormField(
+                            style: const TextStyle(fontSize: 16),
                             controller: phoneNo,
                             initialValue: userData.phoneNo,
                             decoration: const InputDecoration(
@@ -112,6 +114,7 @@ class ProfileUpdateScreen extends StatelessWidget {
                           height: 10.0,
                         ),
                         TextFormField(
+                            style: const TextStyle(fontSize: 16),
                             controller: password,
                             initialValue: userData.password,
                             decoration: const InputDecoration(

@@ -33,8 +33,6 @@ class ProfileScreen extends StatelessWidget {
           actions: [
             IconButton(
                 onPressed: () {
-                  //isDark ? ThemeData.dark() : ThemeData.light();
-
                   if (Get.isDarkMode) {
                     themeController.changeTheme(TAppTheme.lightTheme);
                     themeController.saveTheme(false);

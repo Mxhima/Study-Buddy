@@ -39,8 +39,8 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black87,
-                      shape:
-                          CircleBorder(side: BorderSide(color: tWhiteColor))),
+                      shape: const CircleBorder(
+                          side: BorderSide(color: tWhiteColor))),
                   child: const Padding(
                     padding: EdgeInsets.all(30.0),
                     child: Text(
@@ -57,12 +57,12 @@ class _PomodoroTimerState extends State<PomodoroTimer> {
                   },
                   style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.black87,
-                      shape:
-                          CircleBorder(side: BorderSide(color: tWhiteColor))),
+                      shape: const CircleBorder(
+                          side: BorderSide(color: tWhiteColor))),
                   child: const Padding(
                     padding: EdgeInsets.all(30.0),
                     child: Text(
-                      "STOP",
+                      "START",
                       style: TextStyle(
                         color: Colors.white,
                         fontSize: 24,

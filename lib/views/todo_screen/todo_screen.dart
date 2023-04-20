@@ -1,6 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -79,7 +77,34 @@ class ToDoScreen extends StatelessWidget {
                       Expanded(
                           child: Checkbox(
                         value: task.completed,
-                        onChanged: (value) {},
+                        onChanged: (value) {
+                          //updateTask(docID, data);
+
+                          // Future<void> updateTaskCompletionStatus(
+                          //     String id, bool isCompleted) async {
+                          //   await FirebaseFirestore.instance
+                          //       .collection('tasks')
+                          //       .doc(id)
+                          //       .update({
+                          //     'isCompleted': isCompleted,
+                          //   });
+                          // }
+                        },
+                      )),
+                      Expanded(
+                          child: IconButton(
+                        icon: const Icon(LineAwesomeIcons.trash),
+                        onPressed: () {
+                          // deleteTask(docID);
+
+                          // Deleting the tasks from Firestore.
+                          // Future<void> deleteTask(String id) async {
+                          //   await FirebaseFirestore.instance
+                          //       .collection('tasks')
+                          //       .doc(id)
+                          //       .delete();
+                          // }
+                        },
                       ))
                     ],
                   ),
@@ -98,7 +123,7 @@ class ToDoScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         backgroundColor: tPrimaryColor,
         onPressed: () async {
-          Get.to(() => AddTaskScreen());
+          Get.to(() => const AddTaskScreen());
         },
         child: const Icon(Icons.add),
       ),

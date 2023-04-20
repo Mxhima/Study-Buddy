@@ -1,6 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -72,6 +69,7 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
                 decoration: const InputDecoration(
                   hintText: 'Enter task title...',
                   labelText: 'Title',
+                  hintStyle: TextStyle(fontSize: 15),
                 ),
                 controller: _controller,
                 autofocus: true,

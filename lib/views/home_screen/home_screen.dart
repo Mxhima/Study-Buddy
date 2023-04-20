@@ -33,31 +33,29 @@ class HomeScreen extends StatelessWidget {
           )
         ],
       ),
-      body: Container(
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            SafeArea(
-                child: Column(
-              children: [
-                Text(
-                  DateTime.now().hour.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(fontSize: 75, color: tPrimaryColor),
-                ),
-                Text(
-                  DateTime.now().minute.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(fontSize: 55, color: tPrimaryColor),
-                )
-              ],
-            ))
-          ],
-        ),
+      body: Stack(
+        fit: StackFit.expand,
+        children: [
+          SafeArea(
+              child: Column(
+            children: [
+              Text(
+                DateTime.now().hour.toString(),
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge
+                    ?.copyWith(fontSize: 75, color: tPrimaryColor),
+              ),
+              Text(
+                DateTime.now().minute.toString(),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodySmall
+                    ?.copyWith(fontSize: 55, color: tPrimaryColor),
+              )
+            ],
+          ))
+        ],
       ),
     );
   }

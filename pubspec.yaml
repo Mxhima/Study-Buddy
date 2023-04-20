@@ -55,6 +55,7 @@ dependencies:
   firebase_core: ^2.8.0
   firebase_auth: ^4.3.0
   cloud_firestore: ^4.2.0
+  google_sign_in: ^6.1.0
 
   # -- Calendar Packages
   syncfusion_flutter_calendar: ^21.1.39

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_buddy/controllers/signup_controller.dart';
-import 'package:study_buddy/views/otp_screen/otp_screen.dart';
 import '../../constants/text_strings.dart';
 import '../../models/user_model.dart';
 
@@ -22,6 +21,7 @@ class SignUpFormWidget extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   controller: controller.fullName,
                   decoration: const InputDecoration(
                     label: Text(tFullName),
@@ -31,6 +31,7 @@ class SignUpFormWidget extends StatelessWidget {
                 height: 10.0,
               ),
               TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   controller: controller.email,
                   decoration: const InputDecoration(
                     label: Text(tEmail),
@@ -40,6 +41,7 @@ class SignUpFormWidget extends StatelessWidget {
                 height: 10.0,
               ),
               TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   controller: controller.phoneNo,
                   decoration: const InputDecoration(
                     label: Text(tPhoneNo),
@@ -49,6 +51,7 @@ class SignUpFormWidget extends StatelessWidget {
                 height: 10.0,
               ),
               TextFormField(
+                  style: const TextStyle(fontSize: 16),
                   controller: controller.password,
                   decoration: const InputDecoration(
                     label: Text(tPassword),
