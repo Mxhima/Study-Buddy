@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
 import 'package:study_buddy/views/signup_screen/signup_screen.dart';

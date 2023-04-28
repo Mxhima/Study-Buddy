@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-
+import 'package:study_buddy/views/welcome_screen/welcome_screen.dart';
 import '../views/home_screen/home_screen.dart';
 
 final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -35,7 +35,6 @@ Future<void> signInWithGoogle() async {
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
     );
-
     final User? user = (await _auth.signInWithCredential(credential)).user;
   } catch (e) {
     Get.snackbar('Error', '$e.message',
@@ -59,4 +58,9 @@ Future<void> sendResetPasswordEmail(String email) async {
         backgroundColor: Colors.redAccent.withOpacity(0.1),
         colorText: Colors.red);
   }
+}
+
+Future<void> signOut(BuildContext context) async {
+  await FirebaseAuth.instance.signOut();
+  Get.offAll(() => const WelcomeScreen());
 }

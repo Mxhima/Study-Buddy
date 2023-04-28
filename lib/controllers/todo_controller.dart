@@ -10,7 +10,7 @@ Future<void> addTask(String title) {
 }
 
 Future<void> updateTask(String docID, data) async {
-  await FirebaseFirestore.instance.collection('').doc(docID).update(data);
+  await FirebaseFirestore.instance.collection('tasks').doc(docID).update(data);
 }
 
 Future<void> deleteTask(String docID) async {

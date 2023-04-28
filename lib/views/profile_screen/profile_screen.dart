@@ -1,12 +1,15 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
+import 'package:study_buddy/controllers/login_controller.dart';
 import 'package:study_buddy/utils/theme/theme.dart';
 import 'package:study_buddy/utils/theme/theme_controller.dart';
 import 'package:study_buddy/views/profile_screen/profile_update_screen.dart';
+import 'package:study_buddy/views/welcome_screen/welcome_screen.dart';
 import '../../widgets/profile_menu_widget.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -91,7 +94,9 @@ class ProfileScreen extends StatelessWidget {
                 icon: LineAwesomeIcons.alternate_sign_out,
                 textcolor: Colors.red,
                 endIcon: false,
-                onPress: () {}),
+                onPress: () {
+                  signOut(context);
+                }),
           ]),
         ),
       ),

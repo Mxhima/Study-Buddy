@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/controllers/todo_controller.dart';
@@ -13,10 +14,13 @@ import 'package:study_buddy/views/todo_screen/addTask_screen.dart';
 class ToDoScreen extends StatelessWidget {
   ToDoScreen({super.key});
   final themeController = Get.find<ThemeController>();
+  final DocumentReference DocRef =
+      FirebaseFirestore.instance.collection('tasks').doc("docId");
 
   @override
   Widget build(BuildContext context) {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
           leading: IconButton(
@@ -67,35 +71,81 @@ class ToDoScreen extends StatelessWidget {
             itemBuilder: (BuildContext context, int index) {
               final task = tasks[index];
 
-              return SizedBox(
+              return Container(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                margin: const EdgeInsets.all(8.0),
+                height: 80,
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(15),
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5), //color of shadow
+                        spreadRadius: 1, //spread radius
+                        blurRadius: 3, // blur radius
+                        offset: const Offset(0, 3),
+                      ),
+                    ]),
                 child: ListTile(
                   title: Row(
                     children: [
-                      Expanded(
-                        child: Text(task.title),
-                      ),
-                      Expanded(
+                      // GestureDetector(
+                      //   onTap: () {},
+                      // ),
+                      SizedBox(
+                          width: 15,
                           child: Checkbox(
-                        value: task.completed,
-                        onChanged: (value) {
-                          //updateTask(docID, data);
+                            value: task.completed,
+                            onChanged: (value) {
+                              //updateTask(docID, data);
 
-                          // Future<void> updateTaskCompletionStatus(
-                          //     String id, bool isCompleted) async {
-                          //   await FirebaseFirestore.instance
-                          //       .collection('tasks')
-                          //       .doc(id)
-                          //       .update({
-                          //     'isCompleted': isCompleted,
-                          //   });
-                          // }
-                        },
-                      )),
+                              // Future<void> updateTaskCompletionStatus(
+                              //     String id, bool isCompleted) async {
+                              //   await FirebaseFirestore.instance
+                              //       .collection('tasks')
+                              //       .doc(id)
+                              //       .update({
+                              //     'isCompleted': isCompleted,
+                              //   });
+                              // }
+                            },
+                          )),
+                      const SizedBox(
+                        width: 20,
+                      ),
+                      SizedBox(
+                        width: 200,
+                        child: Text(
+                          task.title,
+                          style: GoogleFonts.roboto(fontSize: 16),
+                        ),
+                      ),
                       Expanded(
                           child: IconButton(
                         icon: const Icon(LineAwesomeIcons.trash),
-                        onPressed: () {
-                          // deleteTask(docID);
+                        onPressed: () async {
+                          DocRef.get().then((doc) {
+                            if (doc.exists) {
+                              final String docId = doc.id;
+                              FirebaseFirestore.instance
+                                  .collection('tasks')
+                                  .doc(docId)
+                                  .delete();
+                            } else {
+                              Get.snackbar("Error", "Document not found");
+                            }
+                          });
+                          // final DocumentSnapshot snapshot = await DocRef.get();
+                          // if (snapshot.exists) {
+                          //   final String docId = snapshot.id;
+                          //   FirebaseFirestore.instance
+                          //       .collection('tasks')
+                          //       .doc(snapshot.id)
+                          //       .delete();
+                          // } else {
+                          //   Get.snackbar("Error", "Document ID not found");
+                          // }
+                          //deleteTask(Task.fromMap(documentId));
 
                           // Deleting the tasks from Firestore.
                           // Future<void> deleteTask(String id) async {
@@ -110,6 +160,7 @@ class ToDoScreen extends StatelessWidget {
                   ),
                   trailing: IconButton(
                     icon: const Icon(LineAwesomeIcons.play),
+                    color: tPrimaryColor,
                     onPressed: () {
                       Get.to(() => const PomodoroTimer());
                     },

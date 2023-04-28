@@ -14,7 +14,7 @@ class ProfileUpdateScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(ProfileController());
+    //final controller = Get.put(ProfileController());
 
     return Scaffold(
       appBar: AppBar(
@@ -32,7 +32,7 @@ class ProfileUpdateScreen extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.all(20.0),
           child: FutureBuilder(
-            future: controller.getUserData(),
+            //future: controller.getUserData(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
@@ -135,7 +135,7 @@ class ProfileUpdateScreen extends StatelessWidget {
                                   phoneNo: phoneNo.text.trim(),
                                 );
 
-                                await controller.updateUserRecords(userData);
+                                //await controller.updateUserRecords(userData);
                               },
                               style: ElevatedButton.styleFrom(
                                 backgroundColor: tPrimaryColor,

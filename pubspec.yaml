@@ -60,6 +60,11 @@ dependencies:
   # -- Calendar Packages
   syncfusion_flutter_calendar: ^21.1.39
   
+  # -- Do not Disturb Packages
+  flutter_dnd: ^0.1.4
+  permission_handler: ^10.2.0
+  device_apps: ^2.2.0
+
 
 dev_dependencies:
   flutter_test:

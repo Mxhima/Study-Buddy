@@ -66,10 +66,11 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
             SizedBox(
               height: 60.0,
               child: TextField(
+                style: const TextStyle(fontSize: 16),
                 decoration: const InputDecoration(
                   hintText: 'Enter task title...',
                   labelText: 'Title',
-                  hintStyle: TextStyle(fontSize: 15),
+                  hintStyle: TextStyle(fontSize: 16),
                 ),
                 controller: _controller,
                 autofocus: true,
@@ -80,7 +81,10 @@ class _AddTaskScreenState extends State<AddTaskScreen> {
               onPressed: _saveTask,
               child: Text(
                 'Add Task',
-                style: Theme.of(context).textTheme.titleSmall,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleSmall!
+                    .copyWith(fontSize: 18),
               ),
             ),
           ],
