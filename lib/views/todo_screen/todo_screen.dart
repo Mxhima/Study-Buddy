@@ -8,6 +8,7 @@ import 'package:study_buddy/controllers/todo_controller.dart';
 import 'package:study_buddy/models/task_model.dart';
 import 'package:study_buddy/utils/theme/theme.dart';
 import 'package:study_buddy/utils/theme/theme_controller.dart';
+import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroTimer_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoro_timer_screen.dart';
 import 'package:study_buddy/views/todo_screen/addTask_screen.dart';
 
@@ -162,7 +163,7 @@ class ToDoScreen extends StatelessWidget {
                     icon: const Icon(LineAwesomeIcons.play),
                     color: tPrimaryColor,
                     onPressed: () {
-                      Get.to(() => const PomodoroTimer());
+                      Get.to(() => const FocusScreen());
                     },
                   ),
                 ),

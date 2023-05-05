@@ -13,6 +13,8 @@ import 'package:study_buddy/views/home_screen/home_screen.dart';
 import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
 import 'package:study_buddy/views/login_screen/login_screen.dart';
 import 'package:study_buddy/views/onboarding_screen/onboarding_screen.dart';
+import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroProvider.dart';
+import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroTimer_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoro_timer_screen.dart';
 import 'package:study_buddy/views/profile_screen/profile_screen.dart';
 import 'package:study_buddy/views/profile_screen/profile_update_screen.dart';
@@ -40,20 +42,21 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider(
-            create: (context) => MeetingProvider(),
-          )
-        ],
-        child: GetMaterialApp(
-          title: 'Study buddy.',
-          theme: TAppTheme.lightTheme,
-          darkTheme: TAppTheme.darkTheme,
-          themeMode: themeController.theme,
-          debugShowCheckedModeBanner: false,
-          defaultTransition: Transition.leftToRightWithFade,
-          transitionDuration: const Duration(milliseconds: 500),
-          home: DoNotDisturbScreen(),
-        ));
+      providers: [
+        ChangeNotifierProvider(
+          create: (context) => MeetingProvider(),
+        ),
+      ],
+      child: GetMaterialApp(
+        title: 'Study buddy.',
+        theme: TAppTheme.lightTheme,
+        darkTheme: TAppTheme.darkTheme,
+        themeMode: themeController.theme,
+        debugShowCheckedModeBanner: false,
+        defaultTransition: Transition.leftToRightWithFade,
+        transitionDuration: const Duration(milliseconds: 500),
+        home: HomeScreen(),
+      ),
+    );
   }
 }

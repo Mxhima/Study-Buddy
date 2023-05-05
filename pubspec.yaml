@@ -50,6 +50,9 @@ dependencies:
   # -- Icon Packages
   cupertino_icons: ^1.0.2
   line_awesome_flutter: ^2.0.0
+
+  # -- Pomodoro Packages
+  pomodoro4d: ^0.0.2
   
   # -- Firebase Packages
   firebase_core: ^2.8.0
@@ -61,7 +64,7 @@ dependencies:
   syncfusion_flutter_calendar: ^21.1.39
   
   # -- Do not Disturb Packages
-  flutter_dnd: ^0.1.4
+  flutter_dnd: ^0.1.4+1
   permission_handler: ^10.2.0
   device_apps: ^2.2.0
 

@@ -1,13 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:get/get.dart';
-import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/constants/image_strings.dart';
-import 'package:study_buddy/views/lecturers_screen/lecturer_details_bottom_modal_screem.dart';
 
 class LecturerScreen extends StatefulWidget {
   const LecturerScreen({super.key});
@@ -29,9 +24,7 @@ class _LecturerScreenState extends State<LecturerScreen> {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
-          }
+          if (snapshot.connectionState == ConnectionState.waiting) {}
 
           // List<DocumentSnapshot> docs = snapshot.data!.docs;
 
