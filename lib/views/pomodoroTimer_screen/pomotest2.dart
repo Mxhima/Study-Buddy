@@ -63,6 +63,13 @@ class _TimerPageState extends State<TimerPage> {
     timer?.cancel();
   }
 
+  void _resetTimer() {
+    setState(() {
+      _isRunning = false;
+      timer?.cancel();
+    });
+  }
+
   void _saveToFirestore() async {
     final FirebaseAuth _auth = FirebaseAuth.instance;
     final FirebaseFirestore _firestore = FirebaseFirestore.instance;
@@ -116,20 +123,21 @@ class _TimerPageState extends State<TimerPage> {
           children: [
             Text(
               '${_elapsedTime.inMinutes}:${(_elapsedTime.inSeconds % 60).toString().padLeft(2, '0')}',
-              style: TextStyle(fontSize: 48),
+              style: TextStyle(fontSize: 56),
             ),
             SizedBox(height: 32),
             Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  child: Text(_isRunning ? 'Stop' : 'Start'),
-                  onPressed: _isRunning ? _stopTimer : _startTimer,
+                  child: Text('Start'),
+                  onPressed: _startTimer,
                 ),
                 ElevatedButton(
                   child: Text('Save'),
                   onPressed: _saveToFirestore,
                 ),
+                ElevatedButton(onPressed: _stopTimer, child: Text("Reset"))
               ],
             ),
           ],

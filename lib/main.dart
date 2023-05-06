@@ -1,5 +1,6 @@
 // ignore_for_file: deprecated_member_use, unused_import
 
+import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,6 +17,8 @@ import 'package:study_buddy/views/onboarding_screen/onboarding_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroProvider.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroTimer_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoro_timer_screen.dart';
+import 'package:study_buddy/views/pomodoroTimer_screen/pomotest.dart';
+import 'package:study_buddy/views/pomodoroTimer_screen/pomotest3.dart';
 import 'package:study_buddy/views/profile_screen/profile_screen.dart';
 import 'package:study_buddy/views/profile_screen/profile_update_screen.dart';
 import 'package:study_buddy/views/signup.dart';
@@ -31,6 +34,14 @@ import 'views/calendar_screen/calendar_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  // await AudioService.init(
+  //   builder: () => AudioPlayerTask(),
+  //   config: const AudioServiceConfig(
+  //     androidNotificationChannelId: 'com.example.music_player.channel.audio',
+  //     androidNotificationChannelName: 'Audio playback',
+  //     androidNotificationOngoing: true,
+  //   ),
+  // );
   runApp(MyApp());
 }
 
@@ -55,7 +66,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
-        home: HomeScreen(),
+        home: WelcomeScreen(),
       ),
     );
   }

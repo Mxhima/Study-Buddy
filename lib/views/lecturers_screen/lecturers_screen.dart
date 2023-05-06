@@ -24,7 +24,13 @@ class _LecturerScreenState extends State<LecturerScreen> {
           if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           }
-          if (snapshot.connectionState == ConnectionState.waiting) {}
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const SizedBox(
+              height: 10,
+              width: 10,
+              child: CircularProgressIndicator(),
+            );
+          }
 
           // List<DocumentSnapshot> docs = snapshot.data!.docs;
 
@@ -109,7 +115,7 @@ class _LecturerScreenState extends State<LecturerScreen> {
                               TextButton(
                                 onPressed: () {
                                   showModalBottomSheet(
-                                      backgroundColor: tPrimaryColor,
+                                      //backgroundColor: tPrimaryColor,
                                       shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.only(
                                         topLeft: Radius.circular(45.0),
