@@ -24,8 +24,8 @@ import 'package:study_buddy/views/profile_screen/profile_update_screen.dart';
 import 'package:study_buddy/views/signup.dart';
 import 'package:study_buddy/views/signup_screen/signup_screen.dart';
 import 'package:study_buddy/views/splash_screen/splash_screen.dart';
-import 'package:study_buddy/views/todo_screen/addTask_screen.dart';
-import 'package:study_buddy/views/todo_screen/todo_screen.dart';
+import 'package:study_buddy/views/task_screen/addTask_screen.dart';
+import 'package:study_buddy/views/task_screen/taskList_screen.dart';
 import 'package:study_buddy/views/welcome_screen/welcome_screen.dart';
 import 'controllers/otp_controller.dart';
 import 'utils/theme/theme_controller.dart';
@@ -66,7 +66,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
-        home: HomeScreen(),
+        home: WelcomeScreen(),
       ),
     );
   }

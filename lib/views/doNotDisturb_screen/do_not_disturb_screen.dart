@@ -7,6 +7,10 @@ import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:study_buddy/utils/theme/theme.dart';
 import 'package:study_buddy/utils/theme/theme_controller.dart';
+import 'package:study_buddy/views/home_screen/home_screen.dart';
+import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
+import 'package:study_buddy/views/musicPlayer_screen/musicdemo3.dart';
+import 'package:study_buddy/widgets/bottom_navbar_widget.dart';
 import 'do_not_disturb_applist_screen.dart';
 
 class DoNotDisturbScreen extends StatefulWidget {
@@ -103,80 +107,94 @@ class _DoNotDisturbScreenState extends State<DoNotDisturbScreen>
           ),
         ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text("Current Filter: $_filterName"),
-            const SizedBox(
-              height: 10.0,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Center(
+            child: Column(
+              children: <Widget>[
+                Text("Current Filter: $_filterName"),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                Text(
+                    "is Notification Access Granted: ${_isNotificationPolicyAccessGranted! ? "YES" : "NO"}"),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    FlutterDnd.gotoPolicySettings();
+                  },
+                  child: const Text("Go To Policy Settings"),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_NONE);
+                  },
+                  child: const Text("Turn ON DND"),
+                ),
+                const SizedBox(
+                  height: 10.0,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_ALL);
+                  },
+                  child: const Text("Turn OFF DND"),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setInterruptionFilter(
+                        FlutterDnd.INTERRUPTION_FILTER_ALARMS);
+                  },
+                  child: const Text('TURN ON DND - ALLOW ALARM'),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setInterruptionFilter(
+                        FlutterDnd.INTERRUPTION_FILTER_PRIORITY);
+                  },
+                  child: const Text('TURN ON DND - ALLOW PRIORITY'),
+                ),
+              ],
             ),
-            Text(
-                "is Notification Access Granted: ${_isNotificationPolicyAccessGranted! ? "YES" : "NO"}"),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                FlutterDnd.gotoPolicySettings();
-              },
-              child: const Text("Go To Policy Settings"),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_NONE);
-              },
-              child: const Text("Turn ON DND"),
-            ),
-            const SizedBox(
-              height: 10.0,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_ALL);
-              },
-              child: const Text("Turn OFF DND"),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_ALARMS);
-              },
-              child: const Text('TURN ON DND - ALLOW ALARM'),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_PRIORITY);
-              },
-              child: const Text('TURN ON DND - ALLOW PRIORITY'),
-            )
-          ],
-        ),
-        // child: Switch(
-        //   value: isDndEnabled,
-        //   onChanged: (value) async {
-        //     setState(() {
-        //       isDndEnabled = value;
-        //     });
+          ),
 
-        //     if (isDndEnabled) {
-        //       await FlutterDnd.setInterruptionFilter(
-        //           FlutterDnd.INTERRUPTION_FILTER_NONE);
-        //     } else {
-        //       await FlutterDnd.setInterruptionFilter(
-        //           FlutterDnd.INTERRUPTION_FILTER_ALL);
-        //     }
-        //   },
-        // ),
+          // child: Switch(
+          //   value: isDndEnabled,
+          //   onChanged: (value) async {
+          //     setState(() {
+          //       isDndEnabled = value;
+          //     });
+
+          //     if (isDndEnabled) {
+          //       await FlutterDnd.setInterruptionFilter(
+          //           FlutterDnd.INTERRUPTION_FILTER_NONE);
+          //     } else {
+          //       await FlutterDnd.setInterruptionFilter(
+          //           FlutterDnd.INTERRUPTION_FILTER_ALL);
+          //     }
+          //   },
+          // ),
+        ],
       ),
+      bottomNavigationBar: CustomBottomNavigationBar(items: [
+        CustomNavItem(title: "Home", icon: Icons.home, screen: HomeScreen()),
+        CustomNavItem(
+            title: "Lecturers", icon: Icons.school, screen: LecturerScreen()),
+        CustomNavItem(
+            title: "Music", icon: Icons.music_note, screen: MusicDemo3()),
+      ]),
     );
   }
 }

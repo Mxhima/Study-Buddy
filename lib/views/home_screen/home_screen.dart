@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_buddy/constants/colors.dart';
@@ -13,12 +15,38 @@ import 'package:study_buddy/views/pomodoroTimer_screen/pomotest.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest2.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest3.dart';
 import 'package:study_buddy/views/profile_screen/profile_screen.dart';
-import 'package:study_buddy/views/todo_screen/todo_screen.dart';
-
+import 'package:study_buddy/widgets/bottom_navbar_widget.dart';
+import 'package:study_buddy/widgets/menu_item_widget.dart';
 import '../musicPlayer_screen/musicdemo3.dart';
+import 'package:study_buddy/views/task_screen/taskList_screen.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  late Timer _timer;
+  late DateTime _currentTime;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentTime = DateTime.now();
+    _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) {
+      setState(() {
+        _currentTime = DateTime.now();
+      });
+    });
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    _timer.cancel();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,172 +78,112 @@ class HomeScreen extends StatelessWidget {
         children: [
           SafeArea(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Text(
-                  DateTime.now().hour.toString(),
+                  '${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')}:${_currentTime.second.toString().padLeft(2, '0')}',
                   style: Theme.of(context)
                       .textTheme
                       .titleLarge
-                      ?.copyWith(fontSize: 75, color: tPrimaryColor),
-                ),
-                Text(
-                  DateTime.now().minute.toString(),
-                  style: Theme.of(context)
-                      .textTheme
-                      .bodySmall
-                      ?.copyWith(fontSize: 55, color: tPrimaryColor),
+                      ?.copyWith(fontSize: 35, color: tPrimaryColor),
                 ),
                 const SizedBox(
-                  height: 30.0,
+                  height: 50.0,
                 ),
-                SingleChildScrollView(
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(width: 20),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => LecturerScreen());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("Lectures"),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: const [
+                            MenuItemWidget(
+                                title: "Lecturers",
+                                icon: Icons.school_rounded,
+                                screen: LecturerScreen()),
+                            SizedBox(
+                              width: 30.0,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => CalendarScreen());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("Calendar"),
+                            MenuItemWidget(
+                                title: "Calendar",
+                                icon: Icons.calendar_month_rounded,
+                                screen: CalendarScreen())
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            MenuItemWidget(
+                                title: "DND",
+                                icon: Icons.do_disturb_on_rounded,
+                                screen: DoNotDisturbScreen()),
+                            const SizedBox(
+                              width: 30.0,
                             ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => DoNotDisturbScreen());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("DND"),
+                            const MenuItemWidget(
+                                title: "Focus",
+                                icon: Icons.timer,
+                                screen: pomoTest3Timer())
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            const MenuItemWidget(
+                                title: "Home",
+                                icon: Icons.home,
+                                screen: HomeScreen()),
+                            const SizedBox(
+                              width: 30,
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(width: 20),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => pomoTest3Timer());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("Focus mode"),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => ToDoScreen());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("To Do"),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => FocusPage());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("Study timer "),
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(width: 20),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => MusicPlayer());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("Music Player"),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              //Get.to(() => ToDoScreen());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("To Do"),
-                            ),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          GestureDetector(
-                            onTap: () {
-                              Get.to(() => MusicDemo3());
-                            },
-                            child: Container(
-                              height: 100,
-                              width: 100,
-                              color: tPrimaryColor,
-                              child: Text("Music player 2 "),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
+                            MenuItemWidget(
+                                title: "ToDo",
+                                icon: Icons.task_rounded,
+                                screen: TaskListScreen())
+                          ],
+                        ),
+                        const SizedBox(
+                          height: 20.0,
+                        ),
+                        // Row(
+                        //   mainAxisAlignment: MainAxisAlignment.center,
+                        //   children: [
+                        //     const MenuItemWidget(
+                        //         title: "Home",
+                        //         icon: Icons.home,
+                        //         screen: HomeScreen()),
+                        //     const SizedBox(
+                        //       width: 30,
+                        //     ),
+                        //     MenuItemWidget(
+                        //         title: "ToDo",
+                        //         icon: Icons.task_rounded,
+                        //         screen: ToDoScreen())
+                        //   ],
+                        // ),
+                      ],
+                    ),
                   ),
                 ),
+                CustomBottomNavigationBar(items: [
+                  CustomNavItem(
+                      title: "Home", icon: Icons.home, screen: HomeScreen()),
+                  CustomNavItem(
+                      title: "Lecturers",
+                      icon: Icons.school,
+                      screen: LecturerScreen()),
+                  CustomNavItem(
+                      title: "Music",
+                      icon: Icons.music_note,
+                      screen: MusicDemo3()),
+                ])
               ],
             ),
           ),
