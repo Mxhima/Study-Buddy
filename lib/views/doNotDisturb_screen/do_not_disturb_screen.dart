@@ -108,6 +108,7 @@ class _DoNotDisturbScreenState extends State<DoNotDisturbScreen>
         ],
       ),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Center(

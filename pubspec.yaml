@@ -78,6 +78,7 @@ dependencies:
   audio_manager: ^0.8.2
   calendar_builder: ^0.0.6
   url_launcher: ^6.1.11
+  image_picker: ^0.6.5+3
 
 
 dev_dependencies:

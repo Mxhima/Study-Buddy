@@ -2,7 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:get/get.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:study_buddy/constants/colors.dart';
+import 'package:study_buddy/utils/theme/theme.dart';
+import 'package:study_buddy/utils/theme/theme_controller.dart';
 import 'package:study_buddy/views/home_screen/home_screen.dart';
 import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
 import 'package:study_buddy/views/musicPlayer_screen/musicdemo3.dart';
@@ -16,12 +19,33 @@ class TaskListScreen extends StatefulWidget {
 }
 
 class _TaskListScreenState extends State<TaskListScreen> {
+  final themeController = Get.find<ThemeController>();
+
   @override
   Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Task List'),
-      ),
+          title: Text(
+            'Task List',
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  if (Get.isDarkMode) {
+                    themeController.changeTheme(TAppTheme.lightTheme);
+                    themeController.saveTheme(false);
+                  } else {
+                    themeController.changeTheme(TAppTheme.darkTheme);
+                    themeController.saveTheme(true);
+                  }
+                },
+                icon:
+                    Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
+          ]),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('Users')

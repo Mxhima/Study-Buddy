@@ -2,9 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
+import 'package:study_buddy/utils/theme/theme.dart';
+import 'package:study_buddy/utils/theme/theme_controller.dart';
 import 'package:study_buddy/views/calendar_screen/calendar_screen.dart';
 import 'package:study_buddy/views/doNotDisturb_screen/do_not_disturb_screen.dart';
 import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
@@ -28,6 +31,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final themeController = Get.find<ThemeController>();
   late Timer _timer;
   late DateTime _currentTime;
 
@@ -50,12 +54,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
           tAppTitle,
           style: Theme.of(context).textTheme.titleSmall,
         ),
+        leading: IconButton(
+            onPressed: () {
+              if (Get.isDarkMode) {
+                themeController.changeTheme(TAppTheme.lightTheme);
+                themeController.saveTheme(false);
+              } else {
+                themeController.changeTheme(TAppTheme.darkTheme);
+                themeController.saveTheme(true);
+              }
+            },
+            icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon)),
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
@@ -172,18 +189,20 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                CustomBottomNavigationBar(items: [
-                  CustomNavItem(
-                      title: "Home", icon: Icons.home, screen: HomeScreen()),
-                  CustomNavItem(
-                      title: "Lecturers",
-                      icon: Icons.school,
-                      screen: LecturerScreen()),
-                  CustomNavItem(
-                      title: "Music",
-                      icon: Icons.music_note,
-                      screen: MusicDemo3()),
-                ])
+                CustomBottomNavigationBar(
+                  items: [
+                    CustomNavItem(
+                        title: "Home", icon: Icons.home, screen: HomeScreen()),
+                    CustomNavItem(
+                        title: "Lecturers",
+                        icon: Icons.school,
+                        screen: LecturerScreen()),
+                    CustomNavItem(
+                        title: "Music",
+                        icon: Icons.music_note,
+                        screen: MusicDemo3()),
+                  ],
+                ),
               ],
             ),
           ),

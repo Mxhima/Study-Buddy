@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/constants/text_strings.dart';
 import 'package:study_buddy/views/signup_screen/signup_screen.dart';
+//import 'package:study_buddy/views/signup_screen/signup_screen.dart';
+
 import '../login_screen/login_screen.dart';
 
 class WelcomeScreen extends StatelessWidget {
@@ -51,7 +53,7 @@ class WelcomeScreen extends StatelessWidget {
                 ),
                 Expanded(
                   child: ElevatedButton(
-                      onPressed: () => Get.to(() => const SignUpScreen()),
+                      onPressed: () => Get.to(() => const SignUpForm()),
                       child: Text(tSignup.toUpperCase())),
                 ),
               ],

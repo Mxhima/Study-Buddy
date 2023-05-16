@@ -6,6 +6,9 @@ import 'package:study_buddy/constants/colors.dart';
 import 'package:study_buddy/constants/image_strings.dart';
 import 'package:study_buddy/utils/theme/theme.dart';
 import 'package:study_buddy/utils/theme/theme_controller.dart';
+import 'package:study_buddy/views/home_screen/home_screen.dart';
+import 'package:study_buddy/views/musicPlayer_screen/musicdemo3.dart';
+import 'package:study_buddy/widgets/bottom_navbar_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class LecturerScreen extends StatefulWidget {
@@ -256,6 +259,22 @@ class _LecturerScreenState extends State<LecturerScreen> {
                   );
                 }).toList(),
               ),
+            ),
+            bottomNavigationBar: CustomBottomNavigationBar(
+              items: [
+                CustomNavItem(
+                    title: "Home",
+                    icon: Icons.home,
+                    screen: const HomeScreen()),
+                CustomNavItem(
+                    title: "Lecturers",
+                    icon: Icons.school,
+                    screen: const LecturerScreen()),
+                CustomNavItem(
+                    title: "Music",
+                    icon: Icons.music_note,
+                    screen: MusicDemo3()),
+              ],
             ),
           );
         });

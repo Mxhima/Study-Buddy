@@ -21,7 +21,7 @@ import 'package:study_buddy/views/pomodoroTimer_screen/pomotest.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest3.dart';
 import 'package:study_buddy/views/profile_screen/profile_screen.dart';
 import 'package:study_buddy/views/profile_screen/profile_update_screen.dart';
-import 'package:study_buddy/views/signup.dart';
+import 'package:study_buddy/views/signup_screen/signup_screen.dart';
 import 'package:study_buddy/views/signup_screen/signup_screen.dart';
 import 'package:study_buddy/views/splash_screen/splash_screen.dart';
 import 'package:study_buddy/views/task_screen/addTask_screen.dart';

@@ -504,6 +504,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  image_picker:
+    dependency: "direct main"
+    description:
+      name: image_picker
+      sha256: be333e667b7aa5606a7f0a22a8c7cc2286b0a8bf6ac977f7b8a48d650282e201
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.5+3"
   intl:
     dependency: "direct main"
     description:
