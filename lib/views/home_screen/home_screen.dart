@@ -117,14 +117,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: const [
                             MenuItemWidget(
                                 title: "Lecturers",
-                                icon: Icons.school_rounded,
+                                icon: (LineAwesomeIcons.university),
                                 screen: LecturerScreen()),
                             SizedBox(
                               width: 30.0,
                             ),
                             MenuItemWidget(
                                 title: "Calendar",
-                                icon: Icons.calendar_month_rounded,
+                                icon:
+                                    (LineAwesomeIcons.calendar_with_day_focus),
                                 screen: CalendarScreen())
                           ],
                         ),
@@ -136,14 +137,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             MenuItemWidget(
                                 title: "DND",
-                                icon: Icons.do_disturb_on_rounded,
+                                icon: (LineAwesomeIcons.exclamation_circle),
                                 screen: DoNotDisturbScreen()),
                             const SizedBox(
                               width: 30.0,
                             ),
                             const MenuItemWidget(
                                 title: "Focus",
-                                icon: Icons.timer,
+                                icon: (LineAwesomeIcons.hourglass_start),
                                 screen: pomoTest3Timer())
                           ],
                         ),
@@ -154,15 +155,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             const MenuItemWidget(
-                                title: "Home",
-                                icon: Icons.home,
+                                title: "Relaxation",
+                                icon: (LineAwesomeIcons.couch),
                                 screen: HomeScreen()),
                             const SizedBox(
                               width: 30,
                             ),
                             MenuItemWidget(
                                 title: "ToDo",
-                                icon: Icons.task_rounded,
+                                icon: (LineAwesomeIcons.tasks),
                                 screen: TaskListScreen())
                           ],
                         ),
@@ -192,14 +193,16 @@ class _HomeScreenState extends State<HomeScreen> {
                 CustomBottomNavigationBar(
                   items: [
                     CustomNavItem(
-                        title: "Home", icon: Icons.home, screen: HomeScreen()),
+                        title: "Home",
+                        icon: (LineAwesomeIcons.home),
+                        screen: HomeScreen()),
                     CustomNavItem(
                         title: "Lecturers",
-                        icon: Icons.school,
+                        icon: (LineAwesomeIcons.university),
                         screen: LecturerScreen()),
                     CustomNavItem(
                         title: "Music",
-                        icon: Icons.music_note,
+                        icon: (LineAwesomeIcons.music),
                         screen: MusicDemo3()),
                   ],
                 ),

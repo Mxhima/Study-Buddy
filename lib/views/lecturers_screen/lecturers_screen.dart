@@ -35,6 +35,15 @@ class _LecturerScreenState extends State<LecturerScreen> {
     }
   }
 
+  _sendEmail(String emailAddress) async {
+    final url = 'mailto:$emailAddress';
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
@@ -129,31 +138,9 @@ class _LecturerScreenState extends State<LecturerScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                // Container(
-                                //   decoration: BoxDecoration(
-                                //       color: Colors.green,
-                                //       borderRadius: BorderRadius.circular(15),
-                                //       boxShadow: [
-                                //         BoxShadow(
-                                //           color: Colors.grey.withOpacity(0.5), //color of shadow
-                                //           spreadRadius: 1, //spread radius
-                                //           blurRadius: 3, // blur radius
-                                //           offset: const Offset(0, 3),
-                                //         ),
-                                //       ]),
-                                //   child: IconButton(
-                                //     onPressed: () {},
-                                //     icon: const Icon(LineAwesomeIcons.phone),
-                                //   ),
-                                // ),
-                                // IconButton(
-                                //   onPressed: () {},
-                                //   icon: const Icon(LineAwesomeIcons.mail_bulk),
-                                // ),
                                 TextButton(
                                   onPressed: () {
                                     showModalBottomSheet(
-                                        //backgroundColor: tPrimaryColor,
                                         shape: const RoundedRectangleBorder(
                                             borderRadius: BorderRadius.only(
                                           topLeft: Radius.circular(45.0),
@@ -162,7 +149,6 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                         context: context,
                                         builder: (context) => Container(
                                             decoration: const BoxDecoration(
-                                                //color: tPrimaryColor,
                                                 borderRadius: BorderRadius.only(
                                               topLeft: Radius.circular(10.0),
                                               topRight: Radius.circular(10.0),
@@ -196,7 +182,6 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                                         height: 10,
                                                       ),
                                                       ListTile(
-                                                        //leading: Icon(),
                                                         title: Container(
                                                           decoration: BoxDecoration(
                                                               color: Colors.grey
@@ -264,15 +249,15 @@ class _LecturerScreenState extends State<LecturerScreen> {
               items: [
                 CustomNavItem(
                     title: "Home",
-                    icon: Icons.home,
-                    screen: const HomeScreen()),
+                    icon: (LineAwesomeIcons.home),
+                    screen: HomeScreen()),
                 CustomNavItem(
                     title: "Lecturers",
-                    icon: Icons.school,
-                    screen: const LecturerScreen()),
+                    icon: (LineAwesomeIcons.university),
+                    screen: LecturerScreen()),
                 CustomNavItem(
                     title: "Music",
-                    icon: Icons.music_note,
+                    icon: (LineAwesomeIcons.music),
                     screen: MusicDemo3()),
               ],
             ),
@@ -318,139 +303,236 @@ class _LecturerScreenState extends State<LecturerScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                // Container(
-                //   decoration: BoxDecoration(
-                //       color: Colors.green,
-                //       borderRadius: BorderRadius.circular(15),
-                //       boxShadow: [
-                //         BoxShadow(
-                //           color: Colors.grey.withOpacity(0.5), //color of shadow
-                //           spreadRadius: 1, //spread radius
-                //           blurRadius: 3, // blur radius
-                //           offset: const Offset(0, 3),
-                //         ),
-                //       ]),
-                //   child: IconButton(
-                //     onPressed: () {},
-                //     icon: const Icon(LineAwesomeIcons.phone),
-                //   ),
-                // ),
-                // IconButton(
-                //   onPressed: () {},
-                //   icon: const Icon(LineAwesomeIcons.mail_bulk),
-                // ),
                 TextButton(
                   onPressed: () {
                     showModalBottomSheet(
-                      //backgroundColor: tPrimaryColor,
                       shape: const RoundedRectangleBorder(
                           borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(45.0),
                         topRight: Radius.circular(45.0),
                       )),
                       context: context,
-                      builder: (context) => Container(
-                        decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                          topRight: Radius.circular(10.0),
-                          bottomLeft: Radius.circular(10.0),
-                          bottomRight: Radius.circular(10.0),
-                        )),
-                        padding: const EdgeInsets.all(30.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Container(
-                              decoration: const BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(10.0),
-                                  )),
-                              child: Column(
-                                children: <Widget>[
-                                  const ListTile(
-                                    leading: CircleAvatar(
-                                      backgroundColor: tWhiteColor,
-                                      child: Image(
-                                          image: AssetImage(tLecturerImage)),
-                                    ),
-                                  ),
-                                  ListTile(
-                                    title: Container(
-                                      decoration: BoxDecoration(
-                                        color: Colors.white,
-                                        borderRadius: BorderRadius.circular(10),
-                                      ),
-                                      child: Column(
-                                        children: [
-                                          Text(data["fullname"]),
-                                          Text(data["faculty"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodyMedium),
-                                          Text(
-                                            data["email"],
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .bodySmall,
-                                          ),
-                                          Text(data["phone"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall),
-                                          Text(data["studyareas"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall),
-                                          Text(data["modules"],
-                                              style: Theme.of(context)
-                                                  .textTheme
-                                                  .bodySmall),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  ListTile(
-                                    title: Container(
-                                      child: Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          const SizedBox(
-                                            height: 160,
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {
-                                              _launchPhone(data["phone"]);
-                                            },
-                                            child: CircleAvatar(
-                                              backgroundColor: tWhiteColor,
-                                              child: Image(
-                                                  image: AssetImage(
-                                                      tLecturerImage)),
+                      builder: (context) => SingleChildScrollView(
+                        child: Container(
+                          decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
+                            bottomLeft: Radius.circular(10.0),
+                            bottomRight: Radius.circular(10.0),
+                          )),
+                          padding: const EdgeInsets.all(30.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                decoration: const BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(10.0),
+                                    )),
+                                child: Column(
+                                  children: <Widget>[
+                                    // const ListTile(
+                                    //   leading: CircleAvatar(
+                                    //     backgroundColor: tWhiteColor,
+                                    //     child: Image(
+                                    //         image: AssetImage(tLecturerImage)),
+                                    //   ),
+                                    // ),
+                                    ListTile(
+                                      title: Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Text(data["fullname"]),
+                                            const SizedBox(
+                                              height: 8,
                                             ),
-                                          ),
-                                          const SizedBox(
-                                            width: 100,
-                                          ),
-                                          GestureDetector(
-                                            onTap: () {},
-                                            child: CircleAvatar(
-                                              backgroundColor: tWhiteColor,
-                                              child: Image(
-                                                  image: AssetImage(
-                                                      tLecturerImage)),
+                                            Column(
+                                              children: [
+                                                const Text(
+                                                  "Faculty :",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: tPrimaryColor),
+                                                ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                  data["faculty"],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall
+                                                      ?.copyWith(
+                                                          fontWeight: FontWeight
+                                                              .normal),
+                                                ),
+                                              ],
                                             ),
-                                          ),
-                                        ],
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Column(
+                                              children: [
+                                                const Text(
+                                                  "Email :",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: tPrimaryColor),
+                                                ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                  data["email"],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall
+                                                      ?.copyWith(
+                                                          fontWeight: FontWeight
+                                                              .normal),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Column(
+                                              children: [
+                                                const Text(
+                                                  "Phone Number :",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: tPrimaryColor),
+                                                ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                  data["phone"],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall
+                                                      ?.copyWith(
+                                                          fontWeight: FontWeight
+                                                              .normal),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Column(
+                                              children: [
+                                                const Text(
+                                                  "Study Areas :",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: tPrimaryColor),
+                                                ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                  data["studyareas"],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall
+                                                      ?.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontSize: 16),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 8,
+                                            ),
+                                            Column(
+                                              children: [
+                                                const Text(
+                                                  "Teaching Modules :",
+                                                  style: TextStyle(
+                                                      fontSize: 14,
+                                                      color: tPrimaryColor),
+                                                ),
+                                                const SizedBox(
+                                                  height: 2,
+                                                ),
+                                                Text(
+                                                  data["modules"],
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleSmall
+                                                      ?.copyWith(
+                                                          fontWeight:
+                                                              FontWeight.normal,
+                                                          fontSize: 16),
+                                                ),
+                                              ],
+                                            ),
+                                            const SizedBox(
+                                              height: 10,
+                                            ),
+                                            Container(
+                                              height: 50,
+                                              decoration: const BoxDecoration(
+                                                  color: tPrimaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.only(
+                                                    topLeft:
+                                                        Radius.circular(10.0),
+                                                    topRight:
+                                                        Radius.circular(10.0),
+                                                    bottomLeft:
+                                                        Radius.circular(10.0),
+                                                    bottomRight:
+                                                        Radius.circular(10.0),
+                                                  )),
+                                              child: Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  const SizedBox(
+                                                    height: 160,
+                                                  ),
+                                                  IconButton(
+                                                      icon: const Icon(
+                                                          LineAwesomeIcons
+                                                              .phone),
+                                                      onPressed: () {
+                                                        _launchPhone(
+                                                            data["phone"]);
+                                                      }),
+                                                  const SizedBox(
+                                                    width: 100,
+                                                  ),
+                                                  IconButton(
+                                                      onPressed: () {
+                                                        _sendEmail(
+                                                            data["email"]);
+                                                      },
+                                                      icon: Icon(
+                                                          LineAwesomeIcons
+                                                              .mail_bulk)),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                  )
-                                ],
-                              ),
-                            )
-                          ],
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     );
