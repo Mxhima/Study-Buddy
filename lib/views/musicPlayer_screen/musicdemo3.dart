@@ -3,7 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_audio_query/flutter_audio_query.dart';
+import 'package:get/get.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
 import 'package:study_buddy/constants/colors.dart';
+import '../../utils/theme/theme.dart';
+import '../../utils/theme/theme_controller.dart';
 import 'song_widget.dart';
 
 class MusicDemo3 extends StatefulWidget {
@@ -12,6 +16,7 @@ class MusicDemo3 extends StatefulWidget {
 }
 
 class _MusicDemo3State extends State<MusicDemo3> {
+  final themeController = Get.find<ThemeController>();
   AudioManager audiomanager = AudioManager.instance;
   bool showVol = false;
   PlayMode playMode = AudioManager.instance.playMode;
@@ -57,10 +62,35 @@ class _MusicDemo3State extends State<MusicDemo3> {
 
   @override
   Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Music Player"),
-      ),
+          leading: IconButton(
+            onPressed: () {
+              Get.back();
+            },
+            icon: const Icon(LineAwesomeIcons.angle_left),
+          ),
+          title: Text(
+            "Lecturers",
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+                onPressed: () {
+                  if (Get.isDarkMode) {
+                    themeController.changeTheme(TAppTheme.lightTheme);
+                    themeController.saveTheme(false);
+                  } else {
+                    themeController.changeTheme(TAppTheme.darkTheme);
+                    themeController.saveTheme(true);
+                  }
+                },
+                icon:
+                    Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon))
+          ]),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: <Widget>[

@@ -2,6 +2,11 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:line_awesome_flutter/line_awesome_flutter.dart';
+import 'package:study_buddy/constants/text_strings.dart';
+import 'package:study_buddy/utils/theme/theme.dart';
+import 'package:study_buddy/utils/theme/theme_controller.dart';
 
 class pomoTest3Timer extends StatefulWidget {
   const pomoTest3Timer({super.key});
@@ -11,6 +16,7 @@ class pomoTest3Timer extends StatefulWidget {
 }
 
 class _pomoTest3TimerState extends State<pomoTest3Timer> {
+  final themeController = Get.find<ThemeController>();
   int _secondsLeft = 1500;
   int _pomodorosCompleted = 0;
   int _points = 0;
@@ -129,9 +135,35 @@ class _pomoTest3TimerState extends State<pomoTest3Timer> {
 
   @override
   Widget build(BuildContext context) {
+    var isDark = MediaQuery.of(context).platformBrightness == Brightness.dark;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Pomodoro Timer'),
+        leading: IconButton(
+          onPressed: () {
+            Get.back();
+          },
+          icon: const Icon(LineAwesomeIcons.angle_left),
+        ),
+        title: Text(
+          tProfile,
+          style: Theme.of(context).textTheme.titleSmall,
+        ),
+        centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              if (Get.isDarkMode) {
+                themeController.changeTheme(TAppTheme.lightTheme);
+                themeController.saveTheme(false);
+              } else {
+                themeController.changeTheme(TAppTheme.darkTheme);
+                themeController.saveTheme(true);
+              }
+            },
+            icon: Icon(isDark ? LineAwesomeIcons.sun : LineAwesomeIcons.moon),
+          ),
+        ],
       ),
       body: Center(
         child: Column(

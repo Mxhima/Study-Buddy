@@ -133,7 +133,7 @@ class ProfileScreen extends StatelessWidget {
                     ),
                     const SizedBox(height: 30),
                     const Divider(),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 150),
                     //Menu
                     ProfileMenuWidget(
                       title: "Logout",
