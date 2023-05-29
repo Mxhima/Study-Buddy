@@ -107,94 +107,134 @@ class _DoNotDisturbScreenState extends State<DoNotDisturbScreen>
           ),
         ],
       ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Center(
-            child: Column(
-              children: <Widget>[
-                Text("Current Filter: $_filterName"),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                Text(
-                    "is Notification Access Granted: ${_isNotificationPolicyAccessGranted! ? "YES" : "NO"}"),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    FlutterDnd.gotoPolicySettings();
-                  },
-                  child: const Text("Go To Policy Settings"),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_NONE);
-                  },
-                  child: const Text("Turn ON DND"),
-                ),
-                const SizedBox(
-                  height: 10.0,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setInterruptionFilter(FlutterDnd.INTERRUPTION_FILTER_ALL);
-                  },
-                  child: const Text("Turn OFF DND"),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setInterruptionFilter(
-                        FlutterDnd.INTERRUPTION_FILTER_ALARMS);
-                  },
-                  child: const Text('TURN ON DND - ALLOW ALARM'),
-                ),
-                const SizedBox(
-                  height: 10,
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setInterruptionFilter(
-                        FlutterDnd.INTERRUPTION_FILTER_PRIORITY);
-                  },
-                  child: const Text('TURN ON DND - ALLOW PRIORITY'),
-                ),
-              ],
+      body: Container(
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Center(
+              child: Column(
+                children: <Widget>[
+                  Text("Current Filter: $_filterName"),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  Text(
+                      "is Notification Access Granted: ${_isNotificationPolicyAccessGranted! ? "YES" : "NO"}"),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        FlutterDnd.gotoPolicySettings();
+                      },
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(),
+                      child: const Text("Go To Policy Settings"),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setInterruptionFilter(
+                            FlutterDnd.INTERRUPTION_FILTER_NONE);
+                      },
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(),
+                      child: const Text("Turn ON DND"),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10.0,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setInterruptionFilter(
+                            FlutterDnd.INTERRUPTION_FILTER_ALL);
+                      },
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(),
+                      child: const Text("Turn OFF DND"),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setInterruptionFilter(
+                            FlutterDnd.INTERRUPTION_FILTER_ALARMS);
+                      },
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(),
+                      child: const Text('TURN ON DND - ALLOW ALARM'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      onPressed: () {
+                        setInterruptionFilter(
+                            FlutterDnd.INTERRUPTION_FILTER_PRIORITY);
+                      },
+                      style: Theme.of(context)
+                          .elevatedButtonTheme
+                          .style
+                          ?.copyWith(),
+                      child: const Text('TURN ON DND - ALLOW PRIORITY'),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
 
-          // child: Switch(
-          //   value: isDndEnabled,
-          //   onChanged: (value) async {
-          //     setState(() {
-          //       isDndEnabled = value;
-          //     });
+            // child: Switch(
+            //   value: isDndEnabled,
+            //   onChanged: (value) async {
+            //     setState(() {
+            //       isDndEnabled = value;
+            //     });
 
-          //     if (isDndEnabled) {
-          //       await FlutterDnd.setInterruptionFilter(
-          //           FlutterDnd.INTERRUPTION_FILTER_NONE);
-          //     } else {
-          //       await FlutterDnd.setInterruptionFilter(
-          //           FlutterDnd.INTERRUPTION_FILTER_ALL);
-          //     }
-          //   },
-          // ),
-        ],
+            //     if (isDndEnabled) {
+            //       await FlutterDnd.setInterruptionFilter(
+            //           FlutterDnd.INTERRUPTION_FILTER_NONE);
+            //     } else {
+            //       await FlutterDnd.setInterruptionFilter(
+            //           FlutterDnd.INTERRUPTION_FILTER_ALL);
+            //     }
+            //   },
+            // ),
+          ],
+        ),
       ),
       bottomNavigationBar: CustomBottomNavigationBar(items: [
         CustomNavItem(title: "Home", icon: Icons.home, screen: HomeScreen()),
         CustomNavItem(
             title: "Lecturers", icon: Icons.school, screen: LecturerScreen()),
-        CustomNavItem(
-            title: "Music", icon: Icons.music_note, screen: MusicDemo3()),
+        // CustomNavItem(
+        //     title: "Music", icon: Icons.music_note, screen: MusicDemo3()),
       ]),
     );
   }

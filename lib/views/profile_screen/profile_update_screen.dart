@@ -1,7 +1,6 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -17,8 +16,6 @@ class EditProfileScreen extends StatefulWidget {
 
 class _EditProfileScreenState extends State<EditProfileScreen> {
   final themeController = Get.find<ThemeController>();
-  File? _image;
-  final picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
   final _fullnameController = TextEditingController();
   final _phoneController = TextEditingController();

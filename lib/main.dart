@@ -1,6 +1,5 @@
 // ignore_for_file: deprecated_member_use, unused_import
 
-import 'package:audio_service/audio_service.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -66,7 +65,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
-        home: OnboardingScreen(),
+        home: HomeScreen(),
       ),
     );
   }

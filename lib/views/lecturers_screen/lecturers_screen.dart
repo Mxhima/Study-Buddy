@@ -97,151 +97,6 @@ class _LecturerScreenState extends State<LecturerScreen> {
                   String trailing = data["email"];
 
                   return lecturerCard(data);
-
-                  return SingleChildScrollView(
-                    child: Padding(
-                      padding: const EdgeInsets.all(10),
-                      child: Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(15),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey
-                                    .withOpacity(0.5), //color of shadow
-                                spreadRadius: 1, //spread radius
-                                blurRadius: 3, // blur radius
-                                offset: const Offset(0, 3),
-                              ),
-                            ]),
-                        child: Column(
-                          children: [
-                            ListTile(
-                              leading: const SizedBox(
-                                  height: 50,
-                                  width: 50,
-                                  child:
-                                      Image(image: AssetImage(tLecturerImage))),
-                              title: Text(
-                                data["fullname"],
-                                style: const TextStyle(fontSize: 22),
-                              ),
-                              subtitle: Text(
-                                data["faculty"],
-                                style: const TextStyle(
-                                    fontSize: 16, fontStyle: FontStyle.italic),
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 10,
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                TextButton(
-                                  onPressed: () {
-                                    showModalBottomSheet(
-                                        shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(45.0),
-                                          topRight: Radius.circular(45.0),
-                                        )),
-                                        context: context,
-                                        builder: (context) => Container(
-                                            decoration: const BoxDecoration(
-                                                borderRadius: BorderRadius.only(
-                                              topLeft: Radius.circular(10.0),
-                                              topRight: Radius.circular(10.0),
-                                              bottomLeft: Radius.circular(10.0),
-                                              bottomRight:
-                                                  Radius.circular(10.0),
-                                            )),
-                                            padding: const EdgeInsets.all(30.0),
-                                            child: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Container(
-                                                  decoration:
-                                                      const BoxDecoration(
-                                                          color: Colors.white,
-                                                          borderRadius:
-                                                              BorderRadius.all(
-                                                            Radius.circular(
-                                                                10.0),
-                                                          )),
-                                                  child: Column(
-                                                    children: <Widget>[
-                                                      Text(
-                                                        "Lecturer Details",
-                                                        style: Theme.of(context)
-                                                            .textTheme
-                                                            .titleMedium,
-                                                      ),
-                                                      const SizedBox(
-                                                        height: 10,
-                                                      ),
-                                                      ListTile(
-                                                        title: Container(
-                                                          decoration: BoxDecoration(
-                                                              color: Colors.grey
-                                                                  .shade200,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10),
-                                                              boxShadow: [
-                                                                BoxShadow(
-                                                                  color: Colors
-                                                                      .grey
-                                                                      .withOpacity(
-                                                                          0.5), //color of shadow
-                                                                  spreadRadius:
-                                                                      1, //spread radius
-                                                                  blurRadius:
-                                                                      3, // blur radius
-                                                                  offset:
-                                                                      const Offset(
-                                                                          0, 3),
-                                                                ),
-                                                              ]),
-                                                          child: Column(
-                                                            children: [
-                                                              Text(data[
-                                                                  "fullname"]),
-                                                              Text(
-                                                                data["faculty"],
-                                                                style: Theme.of(
-                                                                        context)
-                                                                    .textTheme
-                                                                    .titleSmall!
-                                                                    .copyWith(
-                                                                        fontSize:
-                                                                            16.0,
-                                                                        fontWeight:
-                                                                            FontWeight.normal),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        subtitle: Text(
-                                                            data["fullname"]),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
-                                              ],
-                                            )));
-                                  },
-                                  child: const Text("View"),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  );
                 }).toList(),
               ),
             ),
@@ -255,10 +110,10 @@ class _LecturerScreenState extends State<LecturerScreen> {
                     title: "Lecturers",
                     icon: (LineAwesomeIcons.university),
                     screen: LecturerScreen()),
-                CustomNavItem(
-                    title: "Music",
-                    icon: (LineAwesomeIcons.music),
-                    screen: MusicDemo3()),
+                // CustomNavItem(
+                //     title: "Music",
+                //     icon: (LineAwesomeIcons.music),
+                //     screen: MusicDemo3()),
               ],
             ),
           );
@@ -321,16 +176,11 @@ class _LecturerScreenState extends State<LecturerScreen> {
                             bottomLeft: Radius.circular(10.0),
                             bottomRight: Radius.circular(10.0),
                           )),
-                          padding: const EdgeInsets.all(30.0),
+                          padding: const EdgeInsets.all(20.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Container(
-                                decoration: const BoxDecoration(
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(
-                                      Radius.circular(10.0),
-                                    )),
                                 child: Column(
                                   children: <Widget>[
                                     // const ListTile(
@@ -342,24 +192,26 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                     // ),
                                     ListTile(
                                       title: Container(
-                                        decoration: BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
                                         child: Column(
                                           children: [
-                                            Text(data["fullname"]),
+                                            Text(
+                                              data["fullname"],
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleMedium,
+                                            ),
                                             const SizedBox(
                                               height: 8,
                                             ),
                                             Column(
                                               children: [
-                                                const Text(
+                                                Text(
                                                   "Faculty :",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: tPrimaryColor),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          color: tPrimaryColor),
                                                 ),
                                                 const SizedBox(
                                                   height: 2,
@@ -380,11 +232,13 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                             ),
                                             Column(
                                               children: [
-                                                const Text(
+                                                Text(
                                                   "Email :",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: tPrimaryColor),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          color: tPrimaryColor),
                                                 ),
                                                 const SizedBox(
                                                   height: 2,
@@ -405,11 +259,13 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                             ),
                                             Column(
                                               children: [
-                                                const Text(
+                                                Text(
                                                   "Phone Number :",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: tPrimaryColor),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          color: tPrimaryColor),
                                                 ),
                                                 const SizedBox(
                                                   height: 2,
@@ -430,11 +286,13 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                             ),
                                             Column(
                                               children: [
-                                                const Text(
+                                                Text(
                                                   "Study Areas :",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: tPrimaryColor),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          color: tPrimaryColor),
                                                 ),
                                                 const SizedBox(
                                                   height: 2,
@@ -456,11 +314,13 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                             ),
                                             Column(
                                               children: [
-                                                const Text(
+                                                Text(
                                                   "Teaching Modules :",
-                                                  style: TextStyle(
-                                                      fontSize: 14,
-                                                      color: tPrimaryColor),
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .bodyLarge!
+                                                      .copyWith(
+                                                          color: tPrimaryColor),
                                                 ),
                                                 const SizedBox(
                                                   height: 2,
@@ -480,47 +340,50 @@ class _LecturerScreenState extends State<LecturerScreen> {
                                             const SizedBox(
                                               height: 10,
                                             ),
-                                            Container(
+                                            SizedBox(
                                               height: 50,
-                                              decoration: const BoxDecoration(
-                                                  color: tPrimaryColor,
-                                                  borderRadius:
-                                                      BorderRadius.only(
-                                                    topLeft:
-                                                        Radius.circular(10.0),
-                                                    topRight:
-                                                        Radius.circular(10.0),
-                                                    bottomLeft:
-                                                        Radius.circular(10.0),
-                                                    bottomRight:
-                                                        Radius.circular(10.0),
-                                                  )),
                                               child: Row(
                                                 mainAxisAlignment:
-                                                    MainAxisAlignment.center,
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
-                                                  const SizedBox(
-                                                    height: 160,
+                                                  Container(
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: tPrimaryColor,
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(10.0),
+                                                      ),
+                                                    ),
+                                                    child: IconButton(
+                                                        icon: const Icon(
+                                                            LineAwesomeIcons
+                                                                .phone),
+                                                        onPressed: () {
+                                                          _launchPhone(
+                                                              data["phone"]);
+                                                        }),
                                                   ),
-                                                  IconButton(
-                                                      icon: const Icon(
-                                                          LineAwesomeIcons
-                                                              .phone),
-                                                      onPressed: () {
-                                                        _launchPhone(
-                                                            data["phone"]);
-                                                      }),
-                                                  const SizedBox(
-                                                    width: 100,
-                                                  ),
-                                                  IconButton(
+                                                  Container(
+                                                    decoration:
+                                                        const BoxDecoration(
+                                                      color: tPrimaryColor,
+                                                      borderRadius:
+                                                          BorderRadius.all(
+                                                        Radius.circular(10.0),
+                                                      ),
+                                                    ),
+                                                    child: IconButton(
                                                       onPressed: () {
                                                         _sendEmail(
                                                             data["email"]);
                                                       },
-                                                      icon: Icon(
+                                                      icon: const Icon(
                                                           LineAwesomeIcons
-                                                              .mail_bulk)),
+                                                              .mail_bulk),
+                                                    ),
+                                                  ),
                                                 ],
                                               ),
                                             ),

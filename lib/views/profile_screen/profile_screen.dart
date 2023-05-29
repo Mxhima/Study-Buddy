@@ -47,6 +47,7 @@ class ProfileScreen extends StatelessWidget {
           style: Theme.of(context).textTheme.titleSmall,
         ),
         centerTitle: true,
+        elevation: 0,
         actions: [
           IconButton(
             onPressed: () {
@@ -62,96 +63,192 @@ class ProfileScreen extends StatelessWidget {
           ),
         ],
       ),
-      body: SingleChildScrollView(
-        child: FutureBuilder<DocumentSnapshot>(
-          future: getUserProfile(),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.waiting) {
-              return CircularProgressIndicator(); // Show loading indicator while fetching data
-            }
-            if (snapshot.hasError) {
-              return Text('Error: ${snapshot.error}');
-            }
-            if (snapshot.hasData && snapshot.data!.exists) {
-              var profileData = snapshot.data!.data() as Map<String, dynamic>;
-              return Container(
-                padding: const EdgeInsets.all(20.0),
-                child: Column(
-                  children: [
-                    SizedBox(
-                      width: 120,
-                      height: 120,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(100),
-                        child: Image(image: AssetImage(tProfileImage)),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    Text(
-                      profileData[
-                          'FullName'], // Replace 'name' with the field name in your Firestore collection
-                      style: Theme.of(context).textTheme.titleMedium,
-                    ),
-                    Text(
-                      profileData[
-                          'Email'], // Replace 'email' with the field name in your Firestore collection
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    Text(
-                      profileData[
-                          'PhoneNo'], // Replace 'email' with the field name in your Firestore collection
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    Text(
-                      profileData[
-                          'Faculty'], // Replace 'email' with the field name in your Firestore collection
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    Text(
-                      profileData[
-                          'Degree'], // Replace 'email' with the field name in your Firestore collection
-                      style: Theme.of(context).textTheme.bodyLarge,
-                    ),
-                    Text(
-                      profileData[
-                          'AcademicInterests'], // Replace 'email' with the field name in your Firestore collection
-                      style: Theme.of(context).textTheme.bodyMedium,
-                    ),
-                    const SizedBox(height: 20),
-                    SizedBox(
-                      width: double.infinity,
-                      child: ElevatedButton(
-                        onPressed: () => Get.to(() => EditProfileScreen()),
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: tPrimaryColor,
+      body: Column(
+        children: [
+          Center(
+            child: FutureBuilder<DocumentSnapshot>(
+              future: getUserProfile(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator(); // Show loading indicator while fetching data
+                }
+                if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                }
+                if (snapshot.hasData && snapshot.data!.exists) {
+                  var profileData =
+                      snapshot.data!.data() as Map<String, dynamic>;
+                  return Container(
+                    padding: const EdgeInsets.all(13.0),
+                    child: Column(
+                      children: [
+                        Container(
+                          padding: EdgeInsets.all(10),
+                          decoration: BoxDecoration(
+                              color: tWhiteColor,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.black
+                                      .withOpacity(0.5), //color of shadow
+                                  spreadRadius: 1, //spread radius
+                                  blurRadius: 3, // blur radius
+                                  offset: const Offset(0, 3),
+                                ),
+                              ]),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                width: 120,
+                                height: 120,
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(100),
+                                  child:
+                                      Image(image: AssetImage(tProfileImage)),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text("FullName: "),
+                                  Text(
+                                    profileData[
+                                        'FullName'], // Replace 'name' with the field name in your Firestore collection
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text("Email: "),
+                                  Text(
+                                    profileData[
+                                        'Email'], // Replace 'email' with the field name in your Firestore collection
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text("PhoneNo: "),
+                                  Text(
+                                    profileData[
+                                        'PhoneNo'], // Replace 'email' with the field name in your Firestore collection
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text("Faculty: "),
+                                  Text(
+                                    profileData[
+                                        'Faculty'], // Replace 'email' with the field name in your Firestore collection
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text("Degree: "),
+                                  Text(
+                                    profileData[
+                                        'Degree'], // Replace 'email' with the field name in your Firestore collection
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  const Text("Academic\nInterests: "),
+                                  Text(
+                                    profileData[
+                                        'AcademicInterests'], // Replace 'email' with the field name in your Firestore collection
+                                    style:
+                                        Theme.of(context).textTheme.bodyLarge,
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        child: const Text(
-                          tEditProfile,
-                          style: TextStyle(color: tDarkColor),
-                        ),
-                      ),
+                        const Divider(),
+                        const SizedBox(height: 50),
+                      ],
                     ),
-                    const SizedBox(height: 30),
-                    const Divider(),
-                    const SizedBox(height: 150),
-                    //Menu
-                    ProfileMenuWidget(
-                      title: "Logout",
-                      icon: LineAwesomeIcons.alternate_sign_out,
-                      textcolor: Colors.red,
-                      endIcon: false,
-                      onPress: () {
-                        signOut(context);
-                      },
+                  );
+                }
+                return const Text(
+                    'No user data found.'); // Handle case when user data is not available
+              },
+            ),
+          ),
+          const SizedBox(
+            height: 30,
+          ),
+          Container(
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () => Get.to(() => EditProfileScreen()),
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: tPrimaryColor,
                     ),
-                  ],
+                    child: const Text(
+                      tEditProfile,
+                      style: TextStyle(color: tDarkColor),
+                    ),
+                  ),
                 ),
-              );
-            }
-            return Text(
-                'No user data found.'); // Handle case when user data is not available
-          },
-        ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Container(
+                  child: InkWell(
+                    onTap: () {
+                      signOut(context);
+                    },
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: const [
+                        Image(
+                          image: AssetImage("images/log-out.png"),
+                          height: 40,
+                          width: 40,
+                        ),
+                        SizedBox(
+                          height: 5,
+                        ),
+                        Text("Logout")
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
       ),
       bottomNavigationBar: CustomBottomNavigationBar(
         items: [
@@ -165,11 +262,11 @@ class ProfileScreen extends StatelessWidget {
             icon: LineAwesomeIcons.university,
             screen: LecturerScreen(),
           ),
-          CustomNavItem(
-            title: "Music",
-            icon: LineAwesomeIcons.music,
-            screen: MusicDemo3(),
-          ),
+          // CustomNavItem(
+          //   title: "Music",
+          //   icon: LineAwesomeIcons.music,
+          //   screen: MusicDemo3(),
+          // ),
         ],
       ),
     );

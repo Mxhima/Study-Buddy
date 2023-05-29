@@ -71,14 +71,15 @@ dependencies:
   device_apps: ^2.2.0
 
   # -- Music Player Packages
-  #just_audio: ^0.9.32
-  audio_service: ^0.18.9
-  audioplayers: ^4.0.1
-  flutter_audio_query: ^0.3.5+5
-  audio_manager: ^0.8.2
+  # audio_service: ^0.18.9
+  # audioplayers: ^4.0.1
+  # flutter_audio_query: ^0.3.5+5
+  # audio_manager: ^0.8.2
   calendar_builder: ^0.0.6
   url_launcher: ^6.1.11
-  image_picker: ^0.6.5+3
+  # image_picker: ^0.6.5+3
+  just_audio: ^0.9.33
+  on_audio_query: ^2.9.0
 
 
 dev_dependencies:

@@ -26,6 +26,9 @@ class OnBoardingScreenWidget extends StatelessWidget {
               model.title,
               style: Theme.of(context).textTheme.titleMedium,
             ),
+            const SizedBox(
+              height: 10,
+            ),
             Text(
               model.subtitle,
               style: Theme.of(context).textTheme.bodyMedium,
@@ -37,9 +40,9 @@ class OnBoardingScreenWidget extends StatelessWidget {
           style: Theme.of(context).textTheme.titleSmall,
           textAlign: TextAlign.center,
         ),
-        const SizedBox(
-          height: 100.0,
-        )
+        // const SizedBox(
+        //   height: 100.0,
+        // )
       ]),
     );
   }

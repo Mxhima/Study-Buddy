@@ -43,32 +43,32 @@ class TtextTheme {
   /* Dark Text Theme */
   static TextTheme darkTextTheme = TextTheme(
       titleLarge: GoogleFonts.montserrat(
-        color: Colors.white,
+        color: tWhiteColor,
         fontSize: 28.0,
         fontWeight: FontWeight.bold,
       ),
       titleMedium: GoogleFonts.montserrat(
-        color: Colors.white,
+        color: tWhiteColor,
         fontSize: 24.0,
         fontWeight: FontWeight.w700,
       ),
       titleSmall: GoogleFonts.montserrat(
-        color: Colors.white,
+        color: tWhiteColor,
         fontSize: 20.0,
         fontWeight: FontWeight.w600,
       ),
       bodyLarge: GoogleFonts.poppins(
-        color: Colors.white,
+        color: tWhiteColor,
         fontSize: 18.0,
         fontWeight: FontWeight.normal,
       ),
       bodyMedium: GoogleFonts.poppins(
-        color: Colors.white,
+        color: tWhiteColor,
         fontSize: 16.0,
         fontWeight: FontWeight.normal,
       ),
       bodySmall: GoogleFonts.poppins(
-        color: Colors.white,
+        color: tWhiteColor,
         fontSize: 14.0,
         fontWeight: FontWeight.normal,
       ));

@@ -30,3 +30,10 @@ const String tProfileImage = "images/profileImage.png";
 
 /* Lecturer Screen Images */
 const String tLecturerImage = "images/lecturer.png";
+
+/* Relaxation Screen Images */
+const String tRelaxationImage1 = "images/RelaxationImage1.png";
+const String tRelaxationImage2 = "images/RelaxationImage2.png";
+const String tRelaxationImage3 = "images/RelaxationImage3.png";
+const String tRelaxationImage4 = "images/RelaxationImage4.png";
+const String tRelaxationImage5 = "images/RelaxationImage5.png";

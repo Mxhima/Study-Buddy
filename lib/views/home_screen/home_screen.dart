@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
@@ -10,9 +9,9 @@ import 'package:study_buddy/utils/theme/theme.dart';
 import 'package:study_buddy/utils/theme/theme_controller.dart';
 import 'package:study_buddy/views/calendar_screen/calendar_screen.dart';
 import 'package:study_buddy/views/doNotDisturb_screen/do_not_disturb_screen.dart';
+import 'package:study_buddy/views/forum_screen/forumView.dart';
 import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
 import 'package:study_buddy/views/musicPlayer_screen/music_player.dart';
-import 'package:study_buddy/views/musicPlayer_screen/musicdemo.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroTimer_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest2.dart';
@@ -22,6 +21,8 @@ import 'package:study_buddy/widgets/bottom_navbar_widget.dart';
 import 'package:study_buddy/widgets/menu_item_widget.dart';
 import '../musicPlayer_screen/musicdemo3.dart';
 import 'package:study_buddy/views/task_screen/taskList_screen.dart';
+
+import '../relaxation_screen/relaxation_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -87,7 +88,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 image: AssetImage(tUserProfileImage),
               ),
             ),
-          )
+          ),
         ],
       ),
       body: Stack(
@@ -97,96 +98,104 @@ class _HomeScreenState extends State<HomeScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
-                  '${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')}:${_currentTime.second.toString().padLeft(2, '0')}',
-                  style: Theme.of(context)
-                      .textTheme
-                      .titleLarge
-                      ?.copyWith(fontSize: 35, color: tPrimaryColor),
+                Container(
+                  child: Column(
+                    children: [
+                      Text(
+                        '${_currentTime.hour.toString().padLeft(2, '0')}:${_currentTime.minute.toString().padLeft(2, '0')}:${_currentTime.second.toString().padLeft(2, '0')}',
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(fontSize: 45, color: tPrimaryColor),
+                      ),
+                      const SizedBox(
+                        height: 25.0,
+                      ),
+                    ],
+                  ),
                 ),
-                const SizedBox(
-                  height: 50.0,
-                ),
-                Expanded(
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
-                            MenuItemWidget(
-                                title: "Lecturers",
-                                icon: (LineAwesomeIcons.university),
-                                screen: LecturerScreen()),
-                            SizedBox(
-                              width: 30.0,
-                            ),
-                            MenuItemWidget(
-                                title: "Calendar",
-                                icon:
-                                    (LineAwesomeIcons.calendar_with_day_focus),
-                                screen: CalendarScreen())
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            MenuItemWidget(
-                                title: "DND",
-                                icon: (LineAwesomeIcons.exclamation_circle),
-                                screen: DoNotDisturbScreen()),
-                            const SizedBox(
-                              width: 30.0,
-                            ),
-                            const MenuItemWidget(
-                                title: "Focus",
-                                icon: (LineAwesomeIcons.hourglass_start),
-                                screen: pomoTest3Timer())
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const MenuItemWidget(
-                                title: "Relaxation",
-                                icon: (LineAwesomeIcons.couch),
-                                screen: HomeScreen()),
-                            const SizedBox(
-                              width: 30,
-                            ),
-                            MenuItemWidget(
-                                title: "ToDo",
-                                icon: (LineAwesomeIcons.tasks),
-                                screen: TaskListScreen())
-                          ],
-                        ),
-                        const SizedBox(
-                          height: 20.0,
-                        ),
-                        // Row(
-                        //   mainAxisAlignment: MainAxisAlignment.center,
-                        //   children: [
-                        //     const MenuItemWidget(
-                        //         title: "Home",
-                        //         icon: Icons.home,
-                        //         screen: HomeScreen()),
-                        //     const SizedBox(
-                        //       width: 30,
-                        //     ),
-                        //     MenuItemWidget(
-                        //         title: "ToDo",
-                        //         icon: Icons.task_rounded,
-                        //         screen: ToDoScreen())
-                        //   ],
-                        // ),
-                      ],
+                Container(
+                  child: Expanded(
+                    child: SingleChildScrollView(
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: const [
+                              MenuItemWidget(
+                                  title: "Lecturers",
+                                  icon: (LineAwesomeIcons.university),
+                                  screen: LecturerScreen()),
+                              SizedBox(
+                                width: 30.0,
+                              ),
+                              MenuItemWidget(
+                                  title: "Calendar",
+                                  icon: (LineAwesomeIcons
+                                      .calendar_with_day_focus),
+                                  screen: CalendarScreen())
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              MenuItemWidget(
+                                  title: "DND",
+                                  icon: (LineAwesomeIcons.exclamation_circle),
+                                  screen: DoNotDisturbScreen()),
+                              const SizedBox(
+                                width: 30.0,
+                              ),
+                              const MenuItemWidget(
+                                  title: "Focus",
+                                  icon: (LineAwesomeIcons.hourglass_start),
+                                  screen: pomoTest3Timer())
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              const MenuItemWidget(
+                                  title: "Relaxation",
+                                  icon: (LineAwesomeIcons.couch),
+                                  screen: RelaxationScreen()),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              MenuItemWidget(
+                                  title: "ToDo",
+                                  icon: (LineAwesomeIcons.tasks),
+                                  screen: TaskListScreen())
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 20.0,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              MenuItemWidget(
+                                  title: "Forum",
+                                  icon: (LineAwesomeIcons.discourse),
+                                  screen: ForumNavigateScreen()),
+                              const SizedBox(
+                                width: 30,
+                              ),
+                              MenuItemWidget(
+                                  title: "ToDo",
+                                  icon: Icons.task_rounded,
+                                  screen: TaskListScreen())
+                            ],
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ),
@@ -203,7 +212,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     CustomNavItem(
                         title: "Music",
                         icon: (LineAwesomeIcons.music),
-                        screen: MusicDemo3()),
+                        screen: MusicHomeScreen()),
                   ],
                 ),
               ],

@@ -82,8 +82,8 @@ class _TaskListScreenState extends State<TaskListScreen> {
         CustomNavItem(title: "Home", icon: Icons.home, screen: HomeScreen()),
         CustomNavItem(
             title: "Lecturers", icon: Icons.school, screen: LecturerScreen()),
-        CustomNavItem(
-            title: "Music", icon: Icons.music_note, screen: MusicDemo3()),
+        // CustomNavItem(
+        //     title: "Music", icon: Icons.music_note, screen: MusicDemo3()),
       ]),
     );
   }
