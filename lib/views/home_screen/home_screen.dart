@@ -11,7 +11,6 @@ import 'package:study_buddy/views/calendar_screen/calendar_screen.dart';
 import 'package:study_buddy/views/doNotDisturb_screen/do_not_disturb_screen.dart';
 import 'package:study_buddy/views/forum_screen/forumView.dart';
 import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
-import 'package:study_buddy/views/musicPlayer_screen/music_player.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroTimer_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest2.dart';
@@ -212,7 +211,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     CustomNavItem(
                         title: "Music",
                         icon: (LineAwesomeIcons.music),
-                        screen: MusicHomeScreen()),
+                        screen: MusicDemo3()),
                   ],
                 ),
               ],

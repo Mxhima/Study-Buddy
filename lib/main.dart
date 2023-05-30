@@ -13,9 +13,7 @@ import 'package:study_buddy/views/home_screen/home_screen.dart';
 import 'package:study_buddy/views/lecturers_screen/lecturers_screen.dart';
 import 'package:study_buddy/views/login_screen/login_screen.dart';
 import 'package:study_buddy/views/onboarding_screen/onboarding_screen.dart';
-import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroProvider.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomodoroTimer_screen.dart';
-import 'package:study_buddy/views/pomodoroTimer_screen/pomodoro_timer_screen.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest.dart';
 import 'package:study_buddy/views/pomodoroTimer_screen/pomotest3.dart';
 import 'package:study_buddy/views/profile_screen/profile_screen.dart';
@@ -33,14 +31,6 @@ import 'views/calendar_screen/calendar_screen.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  // await AudioService.init(
-  //   builder: () => AudioPlayerTask(),
-  //   config: const AudioServiceConfig(
-  //     androidNotificationChannelId: 'com.example.music_player.channel.audio',
-  //     androidNotificationChannelName: 'Audio playback',
-  //     androidNotificationOngoing: true,
-  //   ),
-  // );
   runApp(MyApp());
 }
 
@@ -65,7 +55,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         defaultTransition: Transition.leftToRightWithFade,
         transitionDuration: const Duration(milliseconds: 500),
-        home: HomeScreen(),
+        home: SplashScreen(),
       ),
     );
   }
